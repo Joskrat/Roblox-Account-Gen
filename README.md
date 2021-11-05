@@ -12,6 +12,6 @@ and then just run the .py file i think i will upload the .py src and a compiled 
 ## Features
 It does what it says, it generates roblox accounts using threading so you can generate a lot of accounts and it will save the username and password in a login.txt file and will print the username password and date of birth in the console
 
-### Discaler
+### Disclamer
 This program is made for educational purpose only.
 By using this Program, you agree that you hold responsibility and accountability of any consequences caused by your actions.
