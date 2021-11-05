@@ -45,6 +45,7 @@ if __name__ == "__main__":
     os.system("cls;clear")
     os.system(
         "title Roblox Account Gen ^|    Idle    ^| Made by TerrificTable55™#5297")
+    download_chromedriver()
     threadsInput = input(f"[{m}>{w}] Amount of threads: {c}")
 
     for i in range(int(threadsInput)):
