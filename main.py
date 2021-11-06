@@ -37,10 +37,6 @@ w = Fore.WHITE
 err = f"[{r}-{w}]"
 
 
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-
 class ProxyScraperChecker:
     def __init__(
         self,
@@ -358,21 +354,35 @@ if __name__ == "__main__":
     download_chromedriver()
     os.system("cls;clear")
 
-    os.system(
-        "title Roblox Account Gen ^|    Getting Proxies    ^| Made by TerrificTable55™#5297")
-    proxies = main()
-    proxyList = []
-    for proxy in proxies:
-        if str(proxy).__contains__(":"):
-            proxyList.append(proxy)
-    os.system("cls;clear")
+    proxyInput = input(
+        f"{w}[{m}>{w}] Want to use proxies (doesnt work well) or manual proxy [y/n/m]: ")
+    if proxyInput == "y":
+        os.system(
+            "title Roblox Account Gen ^|    Getting Proxies    ^| Made by TerrificTable55™#5297")
+        proxies = main()
+        proxyList = []
+        for proxy in proxies:
+            if str(proxy).__contains__(":"):
+                proxyList.append(proxy)
+        os.system("cls;clear")
+
+    elif proxyInput == "m":
+        proxy = input(f"{w}[{m}>{w}] Proxy (IP:Port): ")
+
+    else:
+        proxyList = None
+        proxy = None
+        os.system("cls;clear")
 
     os.system(
         "title Roblox Account Gen ^|    Idle    ^| Made by TerrificTable55™#5297")
     threadsInput = input(f"[{m}>{w}] Amount of threads: {c}")
 
     for i in range(int(threadsInput)):
-        p = Process(target=gen, args=(25, proxyList,))
+        if proxy != None:
+            p = Process(target=gen, args=(25, proxy,))
+        else:
+            p = Process(target=gen, args=(25, proxyList,))
         p.start()
         processes.append(p)
         os.system(
