@@ -17,17 +17,7 @@ y = Fore.LIGHTYELLOW_EX
 w = Fore.WHITE
 
 
-def login(username: str, password: str, timeout: int, headless: bool = True):
-    options = Options()
-    options.headless = headless
-    options.add_experimental_option("excludeSwitches", ["enable-logging"])
-    bot = webdriver.Chrome(chrome_options=options)
-    bot.get("https://roblox.com")
-    time.sleep(3)
-
-    if len(username) > 20:
-        username = str(username[:20])
-
+def main(bot, username, password, timeout):
     day = Select(bot.find_element_by_xpath('//*[@id="DayDropdown"]'))
     month = Select(bot.find_element_by_xpath('//*[@id="MonthDropdown"]'))
     year = Select(bot.find_element_by_xpath('//*[@id="YearDropdown"]'))
@@ -64,7 +54,7 @@ def login(username: str, password: str, timeout: int, headless: bool = True):
 
     # Register
     try:
-        accept.click()
+        # accept.click()
         time.sleep(1)
         register.click()
         time.sleep(timeout)
@@ -76,3 +66,24 @@ def login(username: str, password: str, timeout: int, headless: bool = True):
     except:
         print("ERROR")
         pass
+
+
+def login(username: str, password: str, timeout: int, proxyList, headless: bool = True):
+    options = Options()
+    options.headless = headless
+    proxy = random.choice(proxyList)
+    options.add_argument(f'--proxy-server={proxy}')
+    options.add_experimental_option("excludeSwitches", ["enable-logging"])
+    bot = webdriver.Chrome(chrome_options=options)
+    bot.get("https://roblox.com")
+    time.sleep(15)
+
+    if len(username) > 20:
+        username = str(username[:20])
+
+    try:
+        main(bot, username, password, 20)
+        return True
+    except:
+        bot.close()
+        return False
