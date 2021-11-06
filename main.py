@@ -329,15 +329,15 @@ def download_chromedriver():
 #     exit()
 
 
-def gen(timeout, proxy):
+def gen(timeout, proxy, headless=False):
     while 1:
         username = nameGen()
         password = passwordGen()
         flag = login(str(username), str(password),
-                     int(timeout), proxy, bool(False))
+                     int(timeout), proxy, bool(headless))
         if flag == False:
             flag = login(str(username), str(password),
-                         int(timeout), proxy, bool(False))
+                         int(timeout), proxy, bool(headless))
             if flag == False:
                 print(f"{err} - Invalid Proxy")
 
@@ -354,6 +354,9 @@ if __name__ == "__main__":
     download_chromedriver()
     os.system("cls;clear")
 
+    os.system(
+        "title Roblox Account Gen ^|    Idle    ^| Made by TerrificTable55™#5297")
+
     proxyInput = input(
         f"{w}[{m}>{w}] Want to use proxies (doesnt work well) or manual proxy [y/n/m]: ")
     if proxyInput == "y":
@@ -364,7 +367,6 @@ if __name__ == "__main__":
         for proxy in proxies:
             if str(proxy).__contains__(":"):
                 proxyList.append(proxy)
-        os.system("cls;clear")
 
     elif proxyInput == "m":
         proxy = input(f"{w}[{m}>{w}] Proxy (IP:Port): ")
@@ -372,17 +374,22 @@ if __name__ == "__main__":
     else:
         proxyList = None
         proxy = None
-        os.system("cls;clear")
 
     os.system(
         "title Roblox Account Gen ^|    Idle    ^| Made by TerrificTable55™#5297")
-    threadsInput = input(f"[{m}>{w}] Amount of threads: {c}")
 
+    headless = input(f"{w}[{m}>{w}] Run chromedriver headless [y/n]: ")
+    if headless == "y":
+        headless = True
+    else:
+        headless = False
+
+    threadsInput = input(f"\n[{m}>{w}] Amount of threads: {c}")
     for i in range(int(threadsInput)):
         if proxy != None:
-            p = Process(target=gen, args=(25, proxy,))
+            p = Process(target=gen, args=(25, proxy, headless,))
         else:
-            p = Process(target=gen, args=(25, proxyList,))
+            p = Process(target=gen, args=(25, proxyList, headless,))
         p.start()
         processes.append(p)
         os.system(

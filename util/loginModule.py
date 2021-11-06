@@ -71,12 +71,14 @@ def main(bot, username, password, timeout):
 def login(username: str, password: str, timeout: int, proxyList, headless: bool = True):
     options = Options()
     options.headless = headless
-    proxy = random.choice(proxyList)
-    options.add_argument(f'--proxy-server={proxy}')
+    if proxyList != None:
+        proxy = random.choice(proxyList)
+        options.add_argument(f'--proxy-server={proxy}')
+        time.sleep(12)
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
     bot = webdriver.Chrome(chrome_options=options)
     bot.get("https://roblox.com")
-    time.sleep(15)
+    time.sleep(3)
 
     if len(username) > 20:
         username = str(username[:20])
