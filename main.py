@@ -1,3 +1,4 @@
+from multiprocessing import Process, cpu_count, process
 from util.passwordGen import passwordGen
 from util.usernameGen import nameGen
 from util.loginModule import login
@@ -30,34 +31,53 @@ def download_chromedriver():
 
     with zipfile.ZipFile(latest_driver_zip, 'r') as zip_ref:
         zip_ref.extractall()
+        print("Chromedriver Installed")
     os.remove(latest_driver_zip)
 
 
-def gen():
-    username = nameGen()
-    password = passwordGen()
-    login(str(username), str(password))
+# def start(threadsAmt, timeout: int):
+#     for i in range(int(threadsAmt)):
+#         thread = threading.Thread(target=gen, args=(timeout,))
+#         thread.start()
+#         threads.append(thread)
+#     print(f"{w}[{g}={w}] -> Threads Started")
+
+#     for thread in threads:
+#         thread.join()
+#     print(f"[{g}={w}] -> Threads Finished, press [{y}ENTER{w}] to exit")
+#     input()
+#     exit()
+
+
+def gen(timeout):
+    while 1:
+        username = nameGen()
+        password = passwordGen()
+        login(str(username), str(password), int(timeout), bool(False))
 
 
 threads = []
+
+
+processes = []
 if __name__ == "__main__":
+    download_chromedriver()
     os.system('mode 110,25')
     os.system("cls;clear")
     os.system(
         "title Roblox Account Gen ^|    Idle    ^| Made by TerrificTable55™#5297")
-    download_chromedriver()
     threadsInput = input(f"[{m}>{w}] Amount of threads: {c}")
 
     for i in range(int(threadsInput)):
+        p = Process(target=gen, args=(25,))
+        p.start()
+        processes.append(p)
         os.system(
             f"title Roblox Account Gen ^|  Threads: {threadsInput}  ^| by TerrificTable55™#5297")
-        thread = threading.Thread(target=gen)
-        thread.start()
-        threads.append(thread)
     print(f"{w}[{g}={w}] -> Threads Started")
 
-    for thread in threads:
-        thread.join()
+    for pr in processes:
+        pr.join()
         os.system(
             "title Roblox Account Gen ^|  Finished  ^| by TerrificTable55™#5297")
     print(f"[{g}={w}] -> Threads Finished, press [{y}ENTER{w}] to exit")
