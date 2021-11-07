@@ -54,7 +54,7 @@ def main(bot, username, password, timeout):
 
     # Register
     try:
-        # accept.click()
+        accept.click()
         time.sleep(1)
         register.click()
         time.sleep(timeout)
@@ -84,7 +84,7 @@ def login(username: str, password: str, timeout: int, proxyList, headless: bool 
         username = str(username[:20])
 
     try:
-        main(bot, username, password, 20)
+        main(bot, username, password, timeout)
         return True
     except:
         bot.close()
