@@ -61,7 +61,7 @@ def main(bot, username, password, timeout):
         # Log
         print(f"[{g}Username{w}] {y}{username}{w} \n[{b}Password{w}] {y}{password}{w}\n[{c}Day{w}]      {m}{dayVal}{w} \n[{c}Month{w}]    {m}{monthVal}{w} \n[{c}Year{w}]     {m}{yearVal}{w}\n\n")
         with open("./logins.txt", "a") as f:
-            f.write(f"[Username] {username} \n[Password] {password}\n\n\n")
+            f.write(f"[Info] {username}:{password}\n")
         bot.close()
     except:
         print("ERROR")

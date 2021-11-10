@@ -13,6 +13,16 @@ except:
     import os
     os.system("title Installing requirements")
     os.system("pip install colorama requests wget selenium loguru maxminddb PySocks")
+    from multiprocessing import Process, cpu_count
+    from util.passwordGen import passwordGen
+    from util.usernameGen import nameGen
+    from util.loginModule import login
+    from util.proxyscraper import main
+    from colorama import Fore
+    import requests
+    import zipfile
+    import wget
+    import os
 
 r = Fore.RED
 g = Fore.GREEN

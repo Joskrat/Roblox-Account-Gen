@@ -6,8 +6,8 @@ from threading import Thread
 from shutil import rmtree
 from loguru import logger
 from requests import get
-from sys import stderr
 from time import sleep
+from sys import stderr
 from os import mkdir
 import config
 
