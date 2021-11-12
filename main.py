@@ -1,13 +1,17 @@
 try:
-    from multiprocessing import Process, cpu_count
+    from selenium.webdriver.chrome.options import Options
     from util.passwordGen import passwordGen
     from util.usernameGen import nameGen
+    from util.loginModule import checker
+    from multiprocessing import Process
     from util.loginModule import login
     from util.proxyscraper import main
+    from selenium import webdriver
     from colorama import Fore
     import requests
     import zipfile
     import wget
+    import time
     import os
 except:
     import os
@@ -79,21 +83,7 @@ def gen(timeout, proxy, headless=False):
                 print(f"{err} - Invalid Proxy")
 
 
-threads = []
-
-
-processes = []
-if __name__ == "__main__":
-    os.system('mode 130,30')
-    os.system("cls;clear")
-    os.system(
-        "title Roblox Account Gen   ^|    Installing Chromedriver    ^|   Made by TerrificTable55™#5297")
-    download_chromedriver()
-    os.system("cls;clear")
-
-    os.system(
-        "title Roblox Account Gen   ^|    Idle    ^|   Made by TerrificTable55™#5297")
-
+def genMenu():
     print(f"""
         {w}██{w}██{w}██{g}╗  {w}██{w}██{w}██{g}╗ {w}██{w}██{w}██{g}╗ {w}██{g}╗      {w}██{w}██{w}██{g}╗ {w}██{g}╗  {w}██{g}╗     {w}██{w}██{w}██{g}╗ {w}██{w}██{w}██{w}█{g}╗{w}██{w}█{g}╗   {w}██{g}╗
         {w}██{g}╔══{w}██{g}╗{w}██{g}╔═══{w}██{g}╗{w}██{g}╔══{w}██{g}╗{w}██{g}║     {w}██{g}╔═══{w}██{g}╗╚{w}██{g}╗{w}██{g}╔╝    {w}██{g}╔════╝ {w}██{g}╔════╝{w}██{w}██{g}╗  {w}██{g}║
@@ -150,3 +140,84 @@ if __name__ == "__main__":
     print(f"[{g}={w}] -> Threads Finished, press [{y}ENTER{w}] to exit")
     input()
     exit()
+
+
+threads = []
+processes = []
+
+
+def mainMenu():
+    os.system('mode 130,30')
+    os.system("cls;clear")
+
+    os.system(
+        "title Roblox Account Gen   ^|    Idle    ^|   Made by TerrificTable55™#5297")
+
+    print(f"""
+        {w}██{w}██{w}██{g}╗  {w}██{w}██{w}██{g}╗ {w}██{w}██{w}██{g}╗ {w}██{g}╗      {w}██{w}██{w}██{g}╗ {w}██{g}╗  {w}██{g}╗     {w}██{w}██{w}██{g}╗ {w}██{w}██{w}██{w}█{g}╗{w}██{w}█{g}╗   {w}██{g}╗
+        {w}██{g}╔══{w}██{g}╗{w}██{g}╔═══{w}██{g}╗{w}██{g}╔══{w}██{g}╗{w}██{g}║     {w}██{g}╔═══{w}██{g}╗╚{w}██{g}╗{w}██{g}╔╝    {w}██{g}╔════╝ {w}██{g}╔════╝{w}██{w}██{g}╗  {w}██{g}║
+        {w}██{w}██{w}██{g}╔╝{w}██{g}║   {w}██{g}║{w}██{w}██{w}██{g}╔╝{w}██{g}║     {w}██{g}║   {w}██{g}║ ╚{w}██{w}█{g}╔╝     {w}██{g}║  {w}██{w}█{g}╗{w}██{w}██{w}█{g}╗  {w}██{g}╔{w}██{g}╗ {w}██{g}║
+        {w}██{g}╔══{w}██{g}╗{w}██{g}║   {w}██{g}║{w}██{g}╔══{w}██{g}╗{w}██{g}║     {w}██{g}║   {w}██{g}║ {w}██{g}╔{w}██{g}╗     {w}██{g}║   {w}██{g}║{w}██{g}╔══╝  {w}██{g}║╚{w}██{g}╗{w}██{g}║
+        {w}██{g}║  {w}██{g}║╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗╚{w}██{w}██{w}██{g}╔╝{w}██{g}╔╝ {w}██{g}╗    ╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗{w}██{g}║ ╚{w}██{w}██{g}║
+        {g}╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝╚═╝  ╚═══╝{w}\n\n\n\n""")
+    print(f"""
+                            [{ml}1{w}] Account Generator
+                            [{ml}2{w}] Account Checker
+                            [{ml}3{w}] Credits
+                            [{ml}X{w}] Exit\n""")
+    choise = str(input(f"{w}[{m}>>>{w}] Choise: "))
+
+    if choise == "1":
+        os.system("cls;clear")
+        genMenu()
+
+    elif choise == "2":
+        os.system("cls;clear")
+        options = Options()
+        options.add_experimental_option("excludeSwitches", ["enable-logging"])
+
+        print(f"""
+            {w}██{w}██{w}██{g}╗  {w}██{w}██{w}██{g}╗ {w}██{w}██{w}██{g}╗ {w}██{g}╗      {w}██{w}██{w}██{g}╗ {w}██{g}╗  {w}██{g}╗     {w}██{w}██{w}██{g}╗ {w}██{w}██{w}██{w}█{g}╗{w}██{w}█{g}╗   {w}██{g}╗
+            {w}██{g}╔══{w}██{g}╗{w}██{g}╔═══{w}██{g}╗{w}██{g}╔══{w}██{g}╗{w}██{g}║     {w}██{g}╔═══{w}██{g}╗╚{w}██{g}╗{w}██{g}╔╝    {w}██{g}╔════╝ {w}██{g}╔════╝{w}██{w}██{g}╗  {w}██{g}║
+            {w}██{w}██{w}██{g}╔╝{w}██{g}║   {w}██{g}║{w}██{w}██{w}██{g}╔╝{w}██{g}║     {w}██{g}║   {w}██{g}║ ╚{w}██{w}█{g}╔╝     {w}██{g}║  {w}██{w}█{g}╗{w}██{w}██{w}█{g}╗  {w}██{g}╔{w}██{g}╗ {w}██{g}║
+            {w}██{g}╔══{w}██{g}╗{w}██{g}║   {w}██{g}║{w}██{g}╔══{w}██{g}╗{w}██{g}║     {w}██{g}║   {w}██{g}║ {w}██{g}╔{w}██{g}╗     {w}██{g}║   {w}██{g}║{w}██{g}╔══╝  {w}██{g}║╚{w}██{g}╗{w}██{g}║
+            {w}██{g}║  {w}██{g}║╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗╚{w}██{w}██{w}██{g}╔╝{w}██{g}╔╝ {w}██{g}╗    ╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗{w}██{g}║ ╚{w}██{w}██{g}║
+            {g}╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝╚═╝  ╚═══╝{w}\n
+            {inf} I would recomend not using this program in headless mode cuz at the moment you need to fill out the captchas yourself
+                (I'm still working on a bypass)\n\n\n""")
+        headless = input(f"{w}[{m}>{w}] Headless [y/n]: ")
+
+        if headless == "y":
+            headless = True
+        else:
+            headless = False
+
+        username = input(f"\n{w}[{m}>{w}] Username: ")
+        password = input(f"{w}[{m}>{w}] Password: ")
+
+        options.headless = headless
+        bot = webdriver.Chrome(chrome_options=options)
+        checker(bot, username, password)
+        input()
+        mainMenu()
+
+    elif choise == "3":
+        os.system("cls;clear")
+        print("""
+                [x]========[x]====================[x]
+                 ║ Made By  ║ TerrificTable        ║
+                [x]========[x]====================[x]
+        """)
+        input()
+        mainMenu()
+
+    elif choise == "4" or choise.lower() == "x":
+        exit()
+
+
+if __name__ == "__main__":
+    os.system(
+        "title Roblox Account Gen   ^|    Installing Chromedriver    ^|   Made by TerrificTable55™#5297")
+    download_chromedriver()
+    os.system("cls;clear")
+    mainMenu()

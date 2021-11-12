@@ -4,7 +4,10 @@ util/__pycache__/loginModule.cpython-39.pyc
 util/__pycache__/passwordGen.cpython-39.pyc
 util/__pycache__/proxyscraper.cpython-39.pyc
 util/__pycache__/usernameGen.cpython-39.pyc
+__pycache/build-main.cpython-39.pyc
 logins.txt
 test.py
 app.ico
-
+build-main.py
+output/RobloxGen.exe
+output/chromedriver.exe
