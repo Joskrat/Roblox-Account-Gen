@@ -58,13 +58,54 @@ def main(bot, username, password, timeout):
         time.sleep(1)
         register.click()
         time.sleep(timeout)
-        # Log
-        print(f"[{g}Username{w}] {y}{username}{w} \n[{b}Password{w}] {y}{password}{w}\n[{c}Day{w}]      {m}{dayVal}{w} \n[{c}Month{w}]    {m}{monthVal}{w} \n[{c}Year{w}]     {m}{yearVal}{w}\n\n")
-        with open("./logins.txt", "a") as f:
-            f.write(f"[Info] {username}:{password}\n")
         bot.close()
     except:
         print("ERROR")
+        pass
+
+
+def checker(bot, username: str, password: str):
+    bot.get("https://www.roblox.com/login")
+
+    usernameInput = bot.find_element_by_xpath('//*[@id="login-username"]')
+    passwordInput = bot.find_element_by_xpath('//*[@id="login-password"]')
+    login = bot.find_element_by_xpath('//button[@id="login-button"]')
+
+    # Username
+    usernameInput.clear()
+    usernameInput.send_keys(username)
+
+    # Password
+    passwordInput.clear()
+    passwordInput.send_keys(password)
+
+    # Login
+    bot.execute_script("arguments[0].click();", login)
+    time.sleep(20)
+
+    try:
+        if str(bot.find_element_by_xpath('//p[@class="form-control-label xsmall text-error login-error ng-binding"]')) != "":
+            log(username, password, False)
+            return False
+        else:
+            log(username, password, True)
+            return True
+    except:
+        log(username, password, True)
+        return True
+
+
+def log(username, password, valid):
+    if valid == True:
+        print(f"[{g}Username{w}] {y}{username}{w} \n[{b}Password{w}] {y}{password}{w} \n[{m}Account-Valid{w}] {g}Valid{w}\n\n")
+
+        with open("./logins.txt", "a") as f:
+            f.write(f"[Info] {username}:{password}\n")
+
+    elif valid == False:
+        print(f"[{g}Username{w}] {y}{username}{w} \n[{b}Password{w}] {y}{password}{w} \n[{m}Account-Valid{w}] {r}Invalid{w}\n\n")
+
+    else:
         pass
 
 
@@ -85,6 +126,7 @@ def login(username: str, password: str, timeout: int, proxyList, headless: bool 
 
     try:
         main(bot, username, password, timeout)
+        checker(bot, username, password)
         return True
     except:
         bot.close()

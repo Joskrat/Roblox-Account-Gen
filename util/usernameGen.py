@@ -11,7 +11,6 @@ def nameGen():
 
     name = random.choice(names)
 
-    username = name + "".join(random.choice(chars) for i in range(2)) + \
-        "".join(random.choice(nums)
-                for i in range(4))
+    username = name + "".join(random.choice(chars) for i in range(3)) + \
+        "".join(random.choice(nums) for i in range(3))
     return username
