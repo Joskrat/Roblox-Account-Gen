@@ -270,6 +270,7 @@ if __name__ == "__main__":
     rpc(appid, "Roblox Account Generator", largeText, largeKey, smallText,
         smallKey, link1Text, link1Url, link2Text, link2Url)
 
+    os.system("cls;clear")
     os.system(
         "title Roblox Account Gen   ^|    Installing Chromedriver    ^|   Made by TerrificTable55™#5297")
     download_chromedriver()
