@@ -6,6 +6,7 @@ try:
     from multiprocessing import Process
     from util.loginModule import login
     from util.proxyscraper import main
+    from pypresence import Presence
     from selenium import webdriver
     from colorama import Fore
     import requests
@@ -38,6 +39,31 @@ y = Fore.LIGHTYELLOW_EX
 w = Fore.WHITE
 inf = f"[{c}i{w}]"
 err = f"[{r}-{w}]"
+
+
+def rpc(appid: str, name: str, largeText: str, largeImage: str, smallText: str, smallImage: str, linkText, link: str, link2Text, link2: str):
+    buttonList = [
+        {
+            "label": linkText,
+            "url": link
+        },
+        {
+            "label": link2Text,
+            "url": link2
+        }
+    ]
+
+    rpc = Presence(appid)
+    rpc.connect()
+    rpc.update(
+        details=name,
+        large_text=largeText,
+        large_image=largeImage,
+        small_text=smallText,
+        small_image=smallImage,
+        buttons=buttonList,
+        start=time.time()
+    )
 
 
 def download_chromedriver():
@@ -216,6 +242,14 @@ def mainMenu():
 
 
 if __name__ == "__main__":
+    os.system(
+        "title Roblox Account Gen   ^|    Starting RPC    ^|   Made by TerrificTable55™#5297")
+    rpc("909446204029550605", "Roblox Account Generator",
+        "RobloxGen", "large",
+        "by TerrificTable", "small",
+        "Github", "https://github.com/TerrificTable",
+        "This Program", "https://github.com/TerrificTable/Roblox-Account-Gen")
+
     os.system(
         "title Roblox Account Gen   ^|    Installing Chromedriver    ^|   Made by TerrificTable55™#5297")
     download_chromedriver()
