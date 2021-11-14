@@ -1,4 +1,5 @@
 ### Roblox-Account-Gen
+![Views](https://komarev.com/ghpvc/?username=RobloxAccountGen&label=Views&style=flat-square)
 A working roblox account generator (state 11.5.2021) it doesnt bypass the capcha stuff cuz these didnt showed up in my test runs
 i have no clue why i made this just had the idea out of no where
 
