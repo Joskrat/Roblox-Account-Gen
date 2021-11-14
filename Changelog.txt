@@ -14,10 +14,13 @@
     Removed:
         - Old UsernameGen
 
+    Credits:
+        - 24host for "showing" me how to write: '|' in Comandline Titles
+        - http://patorjk.com/software/taag for the Ascii logo
+        - XPathHelper to test if XPaths are the right ones
+        - A friend for help me finding bugs and testing everything
 
-        Credits:
-            - 24host for "showing" me how to write: '|' in Comandline Titles
-            - http://patorjk.com/software/taag for the Ascii logo
-            - XPathHelper to test if XPaths are the right ones
-            - A friend for help me finding bugs and testing everything
+    
+    Info:
+        - I'm realy sorry but i cant compile the program to an .exe file anymore because its just too many files
 ----------------------------------------------------------------------
