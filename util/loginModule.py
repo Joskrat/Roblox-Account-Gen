@@ -59,6 +59,19 @@ def main(bot, username, password, timeout):
         time.sleep(1)
         register.click()
 
+        time.sleep(1)
+        try:
+            invalid = bot.find_element_by_xpath(
+                '//*[@id="signup-usernameInputValidation"]')  # /text()
+
+            if invalid != None or str(invalid) != "":
+                log(username, password, None)
+                # bot.close()
+        except Exception as e:
+            print("unavailable " + e)
+            # log(username, password, True)
+            pass
+
         time.sleep(timeout)
         checker(bot, username, password)
     except Exception as e:
