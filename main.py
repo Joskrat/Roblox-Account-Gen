@@ -178,6 +178,8 @@ def mainMenu():
 
     os.system(
         "title Roblox Account Gen   ^|    Idle    ^|   Made by TerrificTable55™#5297")
+    rpc(appid, "Roblox Account Generator - Idle", largeText, largeKey, smallText,
+        smallKey, link1Text, link1Url, link2Text, link2Url)
 
     print(f"""
         {w}██{w}██{w}██{g}╗  {w}██{w}██{w}██{g}╗ {w}██{w}██{w}██{g}╗ {w}██{g}╗      {w}██{w}██{w}██{g}╗ {w}██{g}╗  {w}██{g}╗     {w}██{w}██{w}██{g}╗ {w}██{w}██{w}██{w}█{g}╗{w}██{w}█{g}╗   {w}██{g}╗
@@ -195,10 +197,15 @@ def mainMenu():
 
     if choise == "1":
         os.system("cls;clear")
+        rpc(appid, "Roblox Account Generator - Generator", largeText, largeKey, smallText,
+            smallKey, link1Text, link1Url, link2Text, link2Url)
         genMenu()
 
     elif choise == "2":
         os.system("cls;clear")
+        rpc(appid, "Roblox Account Generator - Acc Checker", largeText, largeKey, smallText,
+            smallKey, link1Text, link1Url, link2Text, link2Url)
+
         options = Options()
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
@@ -229,6 +236,8 @@ def mainMenu():
 
     elif choise == "3":
         os.system("cls;clear")
+        rpc(appid, "Roblox Account Generator - Credits", largeText, largeKey, smallText,
+            smallKey, link1Text, link1Url, link2Text, link2Url)
         print("""
                 [x]========[x]====================[x]
                  ║ Made By  ║ TerrificTable        ║
@@ -242,13 +251,24 @@ def mainMenu():
 
 
 if __name__ == "__main__":
+    global appid, largeText, largeKey, smallText, smallKey, link1Text, link1Url, link2Text, link2Url
+
     os.system(
         "title Roblox Account Gen   ^|    Starting RPC    ^|   Made by TerrificTable55™#5297")
-    rpc("909446204029550605", "Roblox Account Generator",
-        "RobloxGen", "large",
-        "by TerrificTable", "small",
-        "Github", "https://github.com/TerrificTable",
-        "This Program", "https://github.com/TerrificTable/Roblox-Account-Gen")
+
+    appid = "909446204029550605"
+    largeText = "RobloxGen"
+    largeKey = "large"
+    smallText = "by TerrificTable"
+    smallKey = "small"
+
+    link1Text = "Github"
+    link1Url = "https://github.com/TerrificTable"
+    link2Text = "This Program"
+    link2Url = "https://github.com/TerrificTable/Roblox-Account-Gen"
+
+    rpc(appid, "Roblox Account Generator", largeText, largeKey, smallText,
+        smallKey, link1Text, link1Url, link2Text, link2Url)
 
     os.system(
         "title Roblox Account Gen   ^|    Installing Chromedriver    ^|   Made by TerrificTable55™#5297")
