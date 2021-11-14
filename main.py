@@ -17,7 +17,7 @@ try:
 except:
     import os
     os.system("title Installing requirements")
-    os.system("pip install colorama requests wget selenium loguru maxminddb PySocks")
+    os.system("python -m pip install colorama requests wget selenium exrex typing maxminddb ipaddress loguru faker pypresence PySocks")
     from multiprocessing import Process, cpu_count
     from util.passwordGen import passwordGen
     from util.usernameGen import nameGen
