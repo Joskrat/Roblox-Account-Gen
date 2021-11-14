@@ -18,15 +18,20 @@ except:
     import os
     os.system("title Installing requirements")
     os.system("python -m pip install colorama requests wget selenium exrex typing maxminddb ipaddress loguru faker pypresence PySocks")
-    from multiprocessing import Process, cpu_count
+    from selenium.webdriver.chrome.options import Options
     from util.passwordGen import passwordGen
     from util.usernameGen import nameGen
+    from util.loginModule import checker
+    from multiprocessing import Process
     from util.loginModule import login
     from util.proxyscraper import main
+    from pypresence import Presence
+    from selenium import webdriver
     from colorama import Fore
     import requests
     import zipfile
     import wget
+    import time
     import os
 
 r = Fore.RED
