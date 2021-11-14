@@ -41,7 +41,7 @@ inf = f"[{c}i{w}]"
 err = f"[{r}-{w}]"
 
 
-def rpc(appid: str, name: str, largeText: str, largeImage: str, smallText: str, smallImage: str, linkText, link: str, link2Text, link2: str):
+def rpc(name: str, largeText: str, largeImage: str, smallText: str, smallImage: str, linkText, link: str, link2Text, link2: str):
     buttonList = [
         {
             "label": linkText,
@@ -53,8 +53,9 @@ def rpc(appid: str, name: str, largeText: str, largeImage: str, smallText: str, 
         }
     ]
 
-    rpc = Presence(appid)
+    rpc = Presence("909446204029550605")
     rpc.connect()
+
     rpc.update(
         details=name,
         large_text=largeText,
@@ -178,8 +179,8 @@ def mainMenu():
 
     os.system(
         "title Roblox Account Gen   ^|    Idle    ^|   Made by TerrificTable55™#5297")
-    rpc(appid, "Roblox Account Generator - Idle", largeText, largeKey, smallText,
-        smallKey, link1Text, link1Url, link2Text, link2Url)
+    # rpc("Roblox Account Generator - Idle", largeText, largeKey, smallText,
+    #     smallKey, link1Text, link1Url, link2Text, link2Url)
 
     print(f"""
         {w}██{w}██{w}██{g}╗  {w}██{w}██{w}██{g}╗ {w}██{w}██{w}██{g}╗ {w}██{g}╗      {w}██{w}██{w}██{g}╗ {w}██{g}╗  {w}██{g}╗     {w}██{w}██{w}██{g}╗ {w}██{w}██{w}██{w}█{g}╗{w}██{w}█{g}╗   {w}██{g}╗
@@ -197,14 +198,14 @@ def mainMenu():
 
     if choise == "1":
         os.system("cls;clear")
-        rpc(appid, "Roblox Account Generator - Generator", largeText, largeKey, smallText,
-            smallKey, link1Text, link1Url, link2Text, link2Url)
+        # rpc("Roblox Account Generator - Generator", largeText, largeKey, smallText,
+        #     smallKey, link1Text, link1Url, link2Text, link2Url)
         genMenu()
 
     elif choise == "2":
         os.system("cls;clear")
-        rpc(appid, "Roblox Account Generator - Acc Checker", largeText, largeKey, smallText,
-            smallKey, link1Text, link1Url, link2Text, link2Url)
+        # rpc("Roblox Account Generator - Acc Checker", largeText, largeKey, smallText,
+        #     smallKey, link1Text, link1Url, link2Text, link2Url)
 
         options = Options()
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
@@ -236,8 +237,8 @@ def mainMenu():
 
     elif choise == "3":
         os.system("cls;clear")
-        rpc(appid, "Roblox Account Generator - Credits", largeText, largeKey, smallText,
-            smallKey, link1Text, link1Url, link2Text, link2Url)
+        # rpc("Roblox Account Generator - Credits", largeText, largeKey, smallText,
+        #     smallKey, link1Text, link1Url, link2Text, link2Url)
         print("""
                 [x]========[x]====================[x]
                  ║ Made By  ║ TerrificTable        ║
@@ -256,7 +257,6 @@ if __name__ == "__main__":
     os.system(
         "title Roblox Account Gen   ^|    Starting RPC    ^|   Made by TerrificTable55™#5297")
 
-    appid = "909446204029550605"
     largeText = "RobloxGen"
     largeKey = "large"
     smallText = "by TerrificTable"
@@ -267,7 +267,7 @@ if __name__ == "__main__":
     link2Text = "This Program"
     link2Url = "https://github.com/TerrificTable/Roblox-Account-Gen"
 
-    rpc(appid, "Roblox Account Generator", largeText, largeKey, smallText,
+    rpc("Roblox Account Generator", largeText, largeKey, smallText,
         smallKey, link1Text, link1Url, link2Text, link2Url)
 
     os.system("cls;clear")

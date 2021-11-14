@@ -1,3 +1,4 @@
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select
 from selenium import webdriver
@@ -57,22 +58,26 @@ def main(bot, username, password, timeout):
         accept.click()
         time.sleep(1)
         register.click()
-        try:
-            invalid = bot.find_element_by_xpath(
-                '//*[@id="signup-usernameInputValidation"]/text()')
 
-            if invalid != "" or invalid != None:
-                log(username, password, None)
-                bot.exit()
-
-        except Exception as e:
-            # log(username, password, True)
-            pass
         time.sleep(timeout)
         checker(bot, username, password)
     except Exception as e:
         print("ERROR, " + e)
         bot.close()
+
+# time.sleep(1)
+# try:
+#     invalid = bot.find_element_by_xpath(
+#         '//*[@id="signup-usernameInputValidation"]')  # /text()
+
+#     if invalid != None or str(invalid) != "":
+#         print(invalid)
+#         log(username, password, None)
+#         # bot.close()
+# except Exception as e:
+#     print("unavailable " + e)
+#     # log(username, password, True)
+#     pass
 
 
 def checker(bot, username: str, password: str):
@@ -161,6 +166,7 @@ def login(username: str, password: str, timeout: int, proxyList, headless: bool 
         main(bot, username, password, timeout)
         # checker(bot, username, password)
         return True
-    except:
+    except Exception as e:
+        print(e)
         bot.close()
         return False

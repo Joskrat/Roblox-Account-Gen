@@ -15,6 +15,8 @@ def nameGen():
     username = "".join(random.choice(chars) for i in range(2)) + \
         name.lower() + "".join(random.choice(chars) for i in range(3)) + \
         "".join(random.choice(nums) for i in range(3))
+    if username.__contains__("."):
+        username.replace(".", "")
 
     return username
 
