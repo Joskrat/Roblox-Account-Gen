@@ -11,3 +11,4 @@ app.ico
 build-main.py
 output/RobloxGen.exe
 output/chromedriver.exe
+util/__pycache__

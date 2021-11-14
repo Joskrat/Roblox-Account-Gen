@@ -57,53 +57,86 @@ def main(bot, username, password, timeout):
         accept.click()
         time.sleep(1)
         register.click()
+        try:
+            invalid = bot.find_element_by_xpath(
+                '//*[@id="signup-usernameInputValidation"]/text()')
+
+            if invalid != "" or invalid != None:
+                log(username, password, None)
+                bot.exit()
+
+        except Exception as e:
+            # log(username, password, True)
+            pass
         time.sleep(timeout)
+        checker(bot, username, password)
+    except Exception as e:
+        print("ERROR, " + e)
         bot.close()
-    except:
-        print("ERROR")
-        pass
 
 
 def checker(bot, username: str, password: str):
     bot.get("https://www.roblox.com/login")
-
-    usernameInput = bot.find_element_by_xpath('//*[@id="login-username"]')
-    passwordInput = bot.find_element_by_xpath('//*[@id="login-password"]')
-    login = bot.find_element_by_xpath('//button[@id="login-button"]')
-
-    # Username
-    usernameInput.clear()
-    usernameInput.send_keys(username)
-
-    # Password
-    passwordInput.clear()
-    passwordInput.send_keys(password)
-
-    # Login
-    bot.execute_script("arguments[0].click();", login)
-    time.sleep(20)
+    time.sleep(3)
 
     try:
-        if str(bot.find_element_by_xpath('//p[@class="form-control-label xsmall text-error login-error ng-binding"]')) != "":
-            log(username, password, False)
-            return False
-        else:
+        usernameInput = bot.find_element_by_xpath('//*[@id="login-username"]')
+        print("username")
+        passwordInput = bot.find_element_by_xpath('//*[@id="login-password"]')
+        print("password")
+        login = bot.find_element_by_xpath('//button[@id="login-button"]')
+        print("username")
+        accept = bot.find_element_by_xpath(
+            '//*[@id="cookie-banner-wrapper"]/div[1]/div[2]/div/div/button[2]')
+        print("accept")
+
+        # Username
+        usernameInput.clear()
+        usernameInput.send_keys(username)
+        print("Username filledout")
+
+        # Password
+        passwordInput.clear()
+        passwordInput.send_keys(password)
+        print("Password Filledout")
+
+        # Login
+        time.sleep(2)
+        accept.click()
+        print("accept clicked")
+        time.slee(1)
+        bot.execute_script("arguments[0].click();", login)
+        print("login clicked")
+        time.sleep(10)
+
+        try:
+            if str(bot.find_element_by_xpath('//p[@class="form-control-label xsmall text-error login-error ng-binding"]')) != "":
+                log(username, password, False)
+                bot.close()
+            else:
+                log(username, password, True)
+                bot.close()
+        except:
             log(username, password, True)
-            return True
+            bot.close()
+
     except:
         log(username, password, True)
-        return True
+        bot.close()
 
 
 def log(username, password, valid):
     if valid == True:
-        print(f"[{g}Username{w}] {y}{username}{w} \n[{b}Password{w}] {y}{password}{w} \n[{m}Account-Valid{w}] {g}Valid{w}\n\n")
+        print(f"\n[{g}Username{w}] {y}{username}{w} \n[{b}Password{w}] {y}{password}{w} \n[{m}Account-Valid{w}] {g}Valid{w}\n")
 
         with open("./logins.txt", "a") as f:
             f.write(f"[Info] {username}:{password}\n")
 
     elif valid == False:
-        print(f"[{g}Username{w}] {y}{username}{w} \n[{b}Password{w}] {y}{password}{w} \n[{m}Account-Valid{w}] {r}Invalid{w}\n\n")
+        print(f"\n[{g}Username{w}] {y}{username}{w} \n[{b}Password{w}] {y}{password}{w} \n[{m}Account-Valid{w}] {r}Invalid{w}\n")
+
+    elif valid == None:
+        print(f"\n[{r}Username Unavalable or Inapropreat{w}]")
 
     else:
         pass
@@ -126,7 +159,7 @@ def login(username: str, password: str, timeout: int, proxyList, headless: bool 
 
     try:
         main(bot, username, password, timeout)
-        checker(bot, username, password)
+        # checker(bot, username, password)
         return True
     except:
         bot.close()

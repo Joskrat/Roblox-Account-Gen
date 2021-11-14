@@ -1,3 +1,4 @@
+from faker import Faker
 import random
 import string
 
@@ -5,12 +6,18 @@ import string
 def nameGen():
     chars = string.ascii_letters
     nums = string.digits
+    fake = Faker()
 
-    names = open("./names.txt")
-    names = names.read()
+    name = fake.name()
+    name = str(name).split()
+    name = name[0]
 
-    name = random.choice(names)
-
-    username = name + "".join(random.choice(chars) for i in range(3)) + \
+    username = "".join(random.choice(chars) for i in range(2)) + \
+        name.lower() + "".join(random.choice(chars) for i in range(3)) + \
         "".join(random.choice(nums) for i in range(3))
+
     return username
+
+# names = open("./names.txt")
+# names = names.read()
+# name = random.choice(names)

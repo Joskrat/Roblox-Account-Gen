@@ -1,0 +1,23 @@
+----------------------------------------------------------------------
+                        V.1.2
+    Added:
+        - Changelog
+    
+    Changed:
+        - UsernameGen
+        - Login
+        - Checker
+        - Log
+        - Main
+        - gitignore
+    
+    Removed:
+        - Old UsernameGen
+
+
+        Credits:
+            - 24host for "showing" me how to write: '|' in Comandline Titles
+            - http://patorjk.com/software/taag for the Ascii logo
+            - XPathHelper to test if XPaths are the right ones
+            - A friend for help me finding bugs and testing everything
+----------------------------------------------------------------------
