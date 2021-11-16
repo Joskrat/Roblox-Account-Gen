@@ -104,9 +104,11 @@ def checker(bot, username: str, password: str):
         print("password")
         login = bot.find_element_by_xpath('//button[@id="login-button"]')
         print("username")
-        accept = bot.find_element_by_xpath(
-            '//*[@id="cookie-banner-wrapper"]/div[1]/div[2]/div/div/button[2]')
-        print("accept")
+        try:
+            accept = bot.find_element_by_xpath(
+                '//*[@id="cookie-banner-wrapper"]/div[1]/div[2]/div/div/button[2]')
+        except:
+            print("Accept element cant be located")
 
         # Username
         usernameInput.clear()
