@@ -221,7 +221,7 @@ class ProxyScraperChecker:
         # proxies and proxies_anonymous folders
         for proto, proxies in self.proxies.items():
             path = f"proxies/{proto}.txt"
-            path_anonymous = f"proxies_anonymous/{proto}.txt"
+            path_anonymous = f"proxies/proxies_anonymous/{proto}.txt"
             for proxy, exit_node in proxies.items():
                 self.append_to_file(path, proxy)
                 if exit_node != proxy.split(":")[0]:
@@ -231,9 +231,9 @@ class ProxyScraperChecker:
         if self.MMDB:
             with open_database(self.MMDB) as reader:
                 for proto, proxies in self.proxies.items():
-                    path = f"proxies_geolocation/{proto}.txt"
+                    path = f"proxy/proxies_geolocation/{proto}.txt"
                     path_anonymous = (
-                        f"proxies_geolocation_anonymous/{proto}.txt"
+                        f"proxies/proxies_geolocation_anonymous/{proto}.txt"
                     )
                     for proxy, exit_node in proxies.items():
                         # type: ignore
