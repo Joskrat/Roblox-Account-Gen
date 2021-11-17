@@ -8,17 +8,15 @@
   <!-- <img src="https://img.shields.io/github/license/TerrificTable/Roblox-Account-Gen.svg?style=for-the-badge"/> -->
 </p>
 
+<div align="center">
 <p align="center">
-    <img src="./assets/icon.png" style="width:200px;"/>
+    <img src="./assets/icon.png" style="width:200px;" alt="Logo"/>
 </p>
 
-<p align="center">
-    ### Roblox-Account-Gen
-    ---
-    A working roblox account generator (state 11.5.2021) it doesnt bypass the capcha stuff cuz these didnt showed up in my test runs
-    i have no clue why i made this just had the idea out of no where
-
-</p>
+<h1>Roblox-Account-Gen</h>
+<h3>A working roblox account generator (state 11.5.2021) it doesnt bypass the capcha stuff cuz these didnt showed up in my test runs
+i have no clue why i made this just had the idea out of no where
+</div>
 
 ### Installation
 
