@@ -1,4 +1,5 @@
 <!-- ### Roblox-Account-Gen -->
+<!-- ![Views](https://komarev.com/ghpvc/?username=RobloxAccountGen&label=Views&style=flat-square) -->
 
 <p align="center">
   <img src="https://img.shields.io/github/contributors/TerrificTable/Roblox-Account-Gen.svg?style=for-the-badge"/>
@@ -34,13 +35,13 @@
 
 </div>
 
-## Features
+<div align="center">
+    <h1>Features</h>
+    <h3>It does what it says, it generates roblox accounts using threading so you can generate a lot of accounts and it will save the username and password in a login.txt file and will print the username password and date of birth in the console</h3>
 
-It does what it says, it generates roblox accounts using threading so you can generate a lot of accounts and it will save the username and password in a login.txt file and will print the username password and date of birth in the console
+</div>
 
-### Disclaimer
-
-This program is made for educational purpose only.
-By using this Program, you agree that you hold responsibility and accountability of any consequences caused by your actions.
-
-![Views](https://komarev.com/ghpvc/?username=RobloxAccountGen&label=Views&style=flat-square)
+<div align="center">
+    <h1>Disclaimer</h>
+    <h3>This program is made for educational purpose only.
+    By using this Program, you agree that you hold responsibility and accountability of any consequences caused by your actions.</h3>
