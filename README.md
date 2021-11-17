@@ -14,15 +14,23 @@
 </p>
 
 <h1>Roblox-Account-Gen</h>
-<h3>A working roblox account generator (state 11.5.2021) it doesnt bypass the capcha stuff cuz these didnt showed up in my test runs
-i have no clue why i made this just had the idea out of no where
+<h3>A working roblox account generator (state 11.5.2021) it doesnt bypass the capcha stuff cuz these didnt showed up in     my test runs
+    i have no clue why i made this just had the idea out of no where
+<br>
+<br>
+    <a href="https://github.com/TerrificTable/Roblox-Account-Gen/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/TerrificTable/Roblox-Account-Gen/issues">Request Feature</a>
+  </h3>
 </div>
 
-### Installation
+<div align="center">
+<h1>Installation</h>
+<h3>git clone the repo `git clone https://github.com/TerrificTable/Roblox-Account-Gen`
+    install all requirements (if i upload a run.exe file it will install all requests automaticaly)`pip install colorama requests wget selenium`
+    and then just run the .py file i think i will upload the .py src and a compiled .exe file in the [releases](https://github.com/TerrificTable/Roblox-Account-Gen/releases)</h3>
 
-git clone the repo `git clone https://github.com/TerrificTable/Roblox-Account-Gen`
-install all requirements (if i upload a run.exe file it will install all requests automaticaly)`pip install colorama requests wget selenium`
-and then just run the .py file i think i will upload the .py src and a compiled .exe file in the [releases](https://github.com/TerrificTable/Roblox-Account-Gen/releases)
+</div>
 
 ## Features
 
