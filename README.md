@@ -26,9 +26,11 @@
 
 <div align="center">
 <h1>Installation</h>
-<h3>git clone the repo `git clone https://github.com/TerrificTable/Roblox-Account-Gen`
-    install all requirements (if i upload a run.exe file it will install all requests automaticaly)`pip install colorama requests wget selenium`
-    and then just run the .py file i think i will upload the .py src and a compiled .exe file in the [releases](https://github.com/TerrificTable/Roblox-Account-Gen/releases)</h3>
+<h3>git clone the repo</h3>
+`git clone https://github.com/TerrificTable/Roblox-Account-Gen`
+<h3>install all requirements (if i upload a run.exe file it will install all requests automaticaly)</h3>
+`pip install colorama requests wget selenium`
+<h3>and then just run the .py file i think i will upload the .py src and a compiled .exe file in the [releases](https://github.com/TerrificTable/Roblox-Account-Gen/releases)</h3>
 
 </div>
 
