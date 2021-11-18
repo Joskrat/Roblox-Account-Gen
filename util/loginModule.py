@@ -99,11 +99,8 @@ def checker(bot, username: str, password: str):
 
     try:
         usernameInput = bot.find_element_by_xpath('//*[@id="login-username"]')
-        print("username")
         passwordInput = bot.find_element_by_xpath('//*[@id="login-password"]')
-        print("password")
         login = bot.find_element_by_xpath('//button[@id="login-button"]')
-        print("username")
         try:
             accept = bot.find_element_by_xpath(
                 '//*[@id="cookie-banner-wrapper"]/div[1]/div[2]/div/div/button[2]')
@@ -113,20 +110,16 @@ def checker(bot, username: str, password: str):
         # Username
         usernameInput.clear()
         usernameInput.send_keys(username)
-        print("Username filledout")
 
         # Password
         passwordInput.clear()
         passwordInput.send_keys(password)
-        print("Password Filledout")
 
         # Login
         time.sleep(2)
         accept.click()
-        print("accept clicked")
         time.slee(1)
         bot.execute_script("arguments[0].click();", login)
-        print("login clicked")
         time.sleep(10)
 
         try:
