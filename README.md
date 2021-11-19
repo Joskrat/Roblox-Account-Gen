@@ -16,7 +16,7 @@
     <h1>Roblox-Account-Gen</h>
     <h3>A working roblox account generator (state 11.5.2021) it doesnt bypass the capcha stuff cuz these didnt showed up in     my test runs
         i have no clue why i made this just had the idea out of no where<br>
-        To be honest i have no clue about the captcha its probably FunCaptcha but i have no clue how they make it cuz sometimes it will be shown and sometimes it doesnt if you have an idea you can create a pull requests
+        To be honest i have no clue about the captcha its probably FunCaptcha but i have no clue how they make it cuz sometimes it will be shown and sometimes it doesnt if you           have an idea you can create a pull requests
     <br>
     <br>
     <a href="https://github.com/TerrificTable/Roblox-Account-Gen/issues">Report Bug</a>
