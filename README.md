@@ -41,8 +41,8 @@
 
 <div align="center">
     <h1>ToDo</h>
-    <h3>- Optional AutoUpdate
-        - Captcha Bypass
+    <h3>- Optional AutoUpdate<br>
+        - Captcha Bypass<br>
         - Sorting code</h3>
 </div>
 
