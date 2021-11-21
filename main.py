@@ -1,4 +1,5 @@
 try:
+    from util.updateModule import github_version, updateMain
     from selenium.webdriver.chrome.options import Options
     from util.passwordGen import passwordGen
     from util.usernameGen import nameGen
@@ -8,16 +9,21 @@ try:
     from util.proxyscraper import main
     from pypresence import Presence
     from selenium import webdriver
+    from bs4 import BeautifulSoup
+    from zipfile import ZipFile
     from colorama import Fore
+    from tqdm import tqdm
     import requests
     import zipfile
+    import psutil
+    import shutil
     import wget
     import time
     import os
 except:
     import os
     os.system("title Installing requirements")
-    os.system("python -m pip install colorama requests wget selenium exrex typing maxminddb ipaddress loguru faker pypresence PySocks")
+    os.system("python -m pip install colorama requests wget selenium exrex typing maxminddb ipaddress loguru faker pypresence PySocks psutil bs4 tqdm")
     from selenium.webdriver.chrome.options import Options
     from util.passwordGen import passwordGen
     from util.usernameGen import nameGen
@@ -27,9 +33,14 @@ except:
     from util.proxyscraper import main
     from pypresence import Presence
     from selenium import webdriver
+    from bs4 import BeautifulSoup
+    from zipfile import ZipFile
     from colorama import Fore
+    from tqdm import tqdm
     import requests
     import zipfile
+    import psutil
+    import shutil
     import wget
     import time
     import os
@@ -44,6 +55,7 @@ y = Fore.LIGHTYELLOW_EX
 w = Fore.WHITE
 inf = f"[{c}i{w}]"
 err = f"[{r}-{w}]"
+localVer = 1.3
 
 
 def rpc(name: str, largeText: str, largeImage: str, smallText: str, smallImage: str, linkText, link: str, link2Text, link2: str):
@@ -122,7 +134,8 @@ def genMenu():
         {w}██{w}██{w}██{g}╔╝{w}██{g}║   {w}██{g}║{w}██{w}██{w}██{g}╔╝{w}██{g}║     {w}██{g}║   {w}██{g}║ ╚{w}██{w}█{g}╔╝     {w}██{g}║  {w}██{w}█{g}╗{w}██{w}██{w}█{g}╗  {w}██{g}╔{w}██{g}╗ {w}██{g}║
         {w}██{g}╔══{w}██{g}╗{w}██{g}║   {w}██{g}║{w}██{g}╔══{w}██{g}╗{w}██{g}║     {w}██{g}║   {w}██{g}║ {w}██{g}╔{w}██{g}╗     {w}██{g}║   {w}██{g}║{w}██{g}╔══╝  {w}██{g}║╚{w}██{g}╗{w}██{g}║
         {w}██{g}║  {w}██{g}║╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗╚{w}██{w}██{w}██{g}╔╝{w}██{g}╔╝ {w}██{g}╗    ╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗{w}██{g}║ ╚{w}██{w}██{g}║
-        {g}╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝╚═╝  ╚═══╝{w}\n
+        {g}╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝╚═╝  ╚═══╝{w}
+        {w}\n
         {inf} I would recomend not using this program in headless mode cuz at the moment you need to fill out the captchas yourself
             (I'm still working on a bypass)\n\n\n""")
 
@@ -193,12 +206,16 @@ def mainMenu():
         {w}██{w}██{w}██{g}╔╝{w}██{g}║   {w}██{g}║{w}██{w}██{w}██{g}╔╝{w}██{g}║     {w}██{g}║   {w}██{g}║ ╚{w}██{w}█{g}╔╝     {w}██{g}║  {w}██{w}█{g}╗{w}██{w}██{w}█{g}╗  {w}██{g}╔{w}██{g}╗ {w}██{g}║
         {w}██{g}╔══{w}██{g}╗{w}██{g}║   {w}██{g}║{w}██{g}╔══{w}██{g}╗{w}██{g}║     {w}██{g}║   {w}██{g}║ {w}██{g}╔{w}██{g}╗     {w}██{g}║   {w}██{g}║{w}██{g}╔══╝  {w}██{g}║╚{w}██{g}╗{w}██{g}║
         {w}██{g}║  {w}██{g}║╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗╚{w}██{w}██{w}██{g}╔╝{w}██{g}╔╝ {w}██{g}╗    ╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗{w}██{g}║ ╚{w}██{w}██{g}║
-        {g}╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝╚═╝  ╚═══╝{w}\n\n\n\n""")
+        {g}╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝╚═╝  ╚═══╝{w}
+                                            {w}[{m}DEV{w}]               {c}TerrificTable{w}
+                                            {w}[{m}LOCAL-VERSION{w}]     {g}{str(localVer)}{w}
+                                            {w}[{m}LASTEST-VERSION{w}]   {g}{str(github_version())}{w}\n\n\n
+        """)
     print(f"""
-                            [{ml}1{w}] Account Generator
-                            [{ml}2{w}] Account Checker
-                            [{ml}3{w}] Credits
-                            [{ml}X{w}] Exit\n""")
+                        [{ml}1{w}] Account Generator
+                        [{ml}2{w}] Account Checker
+                        [{ml}3{w}] Credits
+                        [{ml}X{w}] Exit\n""")
     choise = str(input(f"{w}[{m}>>>{w}] Choise: "))
 
     if choise == "1":
@@ -221,7 +238,7 @@ def mainMenu():
             {w}██{w}██{w}██{g}╔╝{w}██{g}║   {w}██{g}║{w}██{w}██{w}██{g}╔╝{w}██{g}║     {w}██{g}║   {w}██{g}║ ╚{w}██{w}█{g}╔╝     {w}██{g}║  {w}██{w}█{g}╗{w}██{w}██{w}█{g}╗  {w}██{g}╔{w}██{g}╗ {w}██{g}║
             {w}██{g}╔══{w}██{g}╗{w}██{g}║   {w}██{g}║{w}██{g}╔══{w}██{g}╗{w}██{g}║     {w}██{g}║   {w}██{g}║ {w}██{g}╔{w}██{g}╗     {w}██{g}║   {w}██{g}║{w}██{g}╔══╝  {w}██{g}║╚{w}██{g}╗{w}██{g}║
             {w}██{g}║  {w}██{g}║╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗╚{w}██{w}██{w}██{g}╔╝{w}██{g}╔╝ {w}██{g}╗    ╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗{w}██{g}║ ╚{w}██{w}██{g}║
-            {g}╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝╚═╝  ╚═══╝{w}\n
+            {g}╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝╚═╝  ╚═══╝\n
             {inf} I would recomend not using this program in headless mode cuz at the moment you need to fill out the captchas yourself
                 (I'm still working on a bypass)\n\n\n""")
         headless = input(f"{w}[{m}>{w}] Headless [y/n]: ")
@@ -276,6 +293,11 @@ if __name__ == "__main__":
         smallKey, link1Text, link1Url, link2Text, link2Url)
 
     os.system("cls;clear")
+    os.system(
+        "title Roblox Account Gen   ^|    Checking For Updates    ^|   Made by TerrificTable55™#5297")
+    offVer = github_version()
+    updateMain(localVer)
+
     os.system(
         "title Roblox Account Gen   ^|    Installing Chromedriver    ^|   Made by TerrificTable55™#5297")
     download_chromedriver()
