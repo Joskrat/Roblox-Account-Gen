@@ -22,7 +22,6 @@
     <a href="https://github.com/TerrificTable/Roblox-Account-Gen/issues">Report Bug</a>
     ·
     <a href="https://github.com/TerrificTable/Roblox-Account-Gen/issues">Request Feature</a>
-
   </h3>
 </div>
 
@@ -33,13 +32,18 @@
     install all requirements (run.bat installs everything)<br>
     <pre>pip install colorama requests wget selenium</pre>
     and then just run the .py file i think i will upload the .py src and a compiled .exe file in the <a href="https://github.com/TerrificTable/Roblox-Account-Gen/releases">Releases</a> (Outdated)</h3>
-
 </div>
 
 <div align="center">
     <h1>Features</h>
     <h3>It does what it says, it generates roblox accounts using threading so you can generate a lot of accounts and it will save the username and password in a login.txt file and will print the username password and date of birth in the console</h3>
+</div>
 
+<div align="center">
+    <h1>ToDo</h>
+    <h3>- Optional AutoUpdate
+        - Captcha Bypass
+        - Sorting code</h3>
 </div>
 
 <div align="center">
