@@ -1,4 +1,7 @@
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select
 from selenium import webdriver
@@ -19,6 +22,7 @@ w = Fore.WHITE
 
 
 def main(bot, username, password, timeout):
+    global count
     day = Select(bot.find_element_by_xpath('//*[@id="DayDropdown"]'))
     month = Select(bot.find_element_by_xpath('//*[@id="MonthDropdown"]'))
     year = Select(bot.find_element_by_xpath('//*[@id="YearDropdown"]'))
@@ -58,21 +62,20 @@ def main(bot, username, password, timeout):
         accept.click()
         time.sleep(1)
         register.click()
-
-        time.sleep(1)
-        # try:
-        #     invalid = bot.find_element_by_xpath(
-        #         '//*[@id="signup-usernameInputValidation"]')  # /text()
-
-        #     if invalid != None or str(invalid) != "":
-        #         log(username, password, None)
-        #         # bot.close()
-        # except Exception as e:
-        #     print("unavailable " + e)
-        #     # log(username, password, True)
-        #     pass
-
         time.sleep(timeout)
+
+        # try:
+        #     bot.find_element_by_xpath('//*[@id="header"]/div/ul[1]/li[2]/a')
+        # except:
+        #     try:
+        #         bot.find_element_by_xpath('//*[@id="signup-button"]')
+        #         log(username, password, None)
+        #     except:
+        #         time.sleep(1)
+        #         checker(bot, username, password)
+        #     time.sleep(3)
+
+        # bot.manage().timeouts().implicitlyWait()
         checker(bot, username, password)
     except Exception as e:
         print("ERROR, " + e)
@@ -95,7 +98,17 @@ def main(bot, username, password, timeout):
 
 def checker(bot, username: str, password: str):
     bot.get("https://www.roblox.com/login")
-    time.sleep(3)
+    # bot.manage().timeouts().implicitlyWait()
+    # time.sleep(2)
+
+    try:
+        bot.find_element_by_xpath('//*[@id="header"]/div/ul[1]/li[2]/a')
+    except:
+        try:
+            bot.find_element_by_xpath('//*[@id="login-username"]')
+        except:
+            checker(bot, username, password)
+        checker(bot, username, password)
 
     try:
         usernameInput = bot.find_element_by_xpath('//*[@id="login-username"]')
@@ -118,9 +131,10 @@ def checker(bot, username: str, password: str):
         # Login
         time.sleep(2)
         accept.click()
-        time.slee(1)
+        time.sleep(1)
         bot.execute_script("arguments[0].click();", login)
-        time.sleep(10)
+        bot.manage().timeouts().implicitlyWait()
+        time.sleep(1)
 
         try:
             if str(bot.find_element_by_xpath('//p[@class="form-control-label xsmall text-error login-error ng-binding"]')) != "":
@@ -165,7 +179,16 @@ def login(username: str, password: str, timeout: int, proxyList, headless: bool 
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
     bot = webdriver.Chrome(chrome_options=options)
     bot.get("https://roblox.com")
-    time.sleep(3)
+
+    try:
+        bot.find_element_by_xpath(
+            '//*[@id="cookie-banner-wrapper"]/div[1]/div[2]/div/div/button[2]')
+    except:
+        try:
+            bot.find_element_by_xpath('//*[@id="DayDropdown"]')
+        except:
+            login(username, password, timeout, proxyList, headless)
+        login(username, password, timeout, proxyList, headless)
 
     if len(username) > 20:
         username = str(username[:20])
