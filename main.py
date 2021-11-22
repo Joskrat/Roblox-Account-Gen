@@ -2,6 +2,7 @@ try:
     from util.updateModule import github_version, updateMain
     from selenium.webdriver.chrome.options import Options
     from util.passwordGen import passwordGen
+    from util.common import title, clear
     from util.usernameGen import nameGen
     from util.loginModule import checker
     from multiprocessing import Process
@@ -9,20 +10,16 @@ try:
     from util.proxyscraper import main
     from pypresence import Presence
     from selenium import webdriver
-    from bs4 import BeautifulSoup
-    from zipfile import ZipFile
     from colorama import Fore
-    from tqdm import tqdm
     import requests
     import zipfile
-    import psutil
-    import shutil
     import wget
     import time
     import os
 except:
     import os
-    os.system("title Installing requirements")
+    from util.common import title
+    title("Installing requirements")
     os.system("python -m pip install colorama requests wget selenium exrex typing maxminddb ipaddress loguru faker pypresence PySocks psutil bs4 tqdm")
     from selenium.webdriver.chrome.options import Options
     from util.passwordGen import passwordGen
@@ -33,10 +30,8 @@ except:
     from util.proxyscraper import main
     from pypresence import Presence
     from selenium import webdriver
-    from bs4 import BeautifulSoup
-    from zipfile import ZipFile
+    from util.common import title
     from colorama import Fore
-    from tqdm import tqdm
     import requests
     import zipfile
     import psutil
@@ -146,8 +141,7 @@ def genMenu():
     proxyInput = input(
         f"{w}[{m}>{w}] Want to use proxies (doesnt work well) or manual proxy [y/n/m]: ")
     if proxyInput == "y":
-        os.system(
-            "title Roblox Account Gen   ^|    Getting Proxies    ^|   Made by TerrificTable55™#5297")
+        title("Getting Proxies")
         proxies = main()
         proxyList = []
         for proxy in proxies:
@@ -161,8 +155,7 @@ def genMenu():
         proxyList = None
         proxy = None
 
-    os.system(
-        "title Roblox Account Gen   ^|    Idle    ^|   Made by TerrificTable55™#5297")
+    title("Idle")
 
     headless = input(f"{w}[{m}>{w}] Run chromedriver headless [y/n]: ")
     if headless == "y":
@@ -178,14 +171,13 @@ def genMenu():
             p = Process(target=gen, args=(10, proxyList, headless,))
         p.start()
         processes.append(p)
-        os.system(
-            f"title Roblox Account Gen   ^|  Threads: {threadsInput}  ^|   by TerrificTable55™#5297")
+        title(f"Threads: {threadsInput}")
     print(f"{w}[{g}={w}] -> Threads Started")
 
     for pr in processes:
         pr.join()
-        os.system(
-            "title Roblox Account Gen   ^|  Finished  ^|   by TerrificTable55™#5297")
+        title("Finished")
+
     print(f"[{g}={w}] -> Threads Finished, press [{y}ENTER{w}] to exit")
     input()
     exit()
@@ -197,12 +189,8 @@ processes = []
 
 def mainMenu():
     os.system('mode 130,30')
-    os.system("cls;clear")
-
-    os.system(
-        "title Roblox Account Gen   ^|    Idle    ^|   Made by TerrificTable55™#5297")
-    # rpc("Roblox Account Generator - Idle", largeText, largeKey, smallText,
-    #     smallKey, link1Text, link1Url, link2Text, link2Url)
+    title("Idle")
+    clear()
 
     print(f"""
         {w}██{w}██{w}██{g}╗  {w}██{w}██{w}██{g}╗ {w}██{w}██{w}██{g}╗ {w}██{g}╗      {w}██{w}██{w}██{g}╗ {w}██{g}╗  {w}██{g}╗     {w}██{w}██{w}██{g}╗ {w}██{w}██{w}██{w}█{g}╗{w}██{w}█{g}╗   {w}██{g}╗
@@ -223,16 +211,11 @@ def mainMenu():
     choise = str(input(f"{w}[{m}>>>{w}] Choise: "))
 
     if choise == "1":
-        os.system("cls;clear")
-        # rpc("Roblox Account Generator - Generator", largeText, largeKey, smallText,
-        #     smallKey, link1Text, link1Url, link2Text, link2Url)
+        clear()
         genMenu()
 
     elif choise == "2":
-        os.system("cls;clear")
-        # rpc("Roblox Account Generator - Acc Checker", largeText, largeKey, smallText,
-        #     smallKey, link1Text, link1Url, link2Text, link2Url)
-
+        clear()
         options = Options()
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
@@ -262,9 +245,7 @@ def mainMenu():
         mainMenu()
 
     elif choise == "3":
-        os.system("cls;clear")
-        # rpc("Roblox Account Generator - Credits", largeText, largeKey, smallText,
-        #     smallKey, link1Text, link1Url, link2Text, link2Url)
+        clear()
         print("""
                 [x]========[x]====================[x]
                  ║ Made By  ║ TerrificTable        ║
@@ -280,8 +261,7 @@ def mainMenu():
 if __name__ == "__main__":
     global appid, largeText, largeKey, smallText, smallKey, link1Text, link1Url, link2Text, link2Url
 
-    os.system(
-        "title Roblox Account Gen   ^|    Starting RPC    ^|   Made by TerrificTable55™#5297")
+    title("Starting RPC")
 
     largeText = "RobloxGen"
     largeKey = "large"
@@ -296,14 +276,12 @@ if __name__ == "__main__":
     rpc("Roblox Account Generator", largeText, largeKey, smallText,
         smallKey, link1Text, link1Url, link2Text, link2Url)
 
-    os.system("cls;clear")
-    os.system(
-        "title Roblox Account Gen   ^|    Checking For Updates    ^|   Made by TerrificTable55™#5297")
+    clear()
+    title("Checking For Updates")
     offVer = github_version()
     updateMain(localVer)
 
-    os.system(
-        "title Roblox Account Gen   ^|    Installing Chromedriver    ^|   Made by TerrificTable55™#5297")
+    title("Installing Chromedriver")
     download_chromedriver()
-    os.system("cls;clear")
+    clear()
     mainMenu()

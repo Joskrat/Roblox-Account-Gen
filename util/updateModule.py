@@ -1,5 +1,6 @@
 from zipfile import ZipFile
 from colorama import Fore
+from common import title
 import requests
 import shutil
 import time
@@ -28,25 +29,35 @@ def github_version():
 
 
 def update():
-    choise = input(f"""{inf} UPDATE AVALABLE 
-            Install or dont install {w}[{g}y{w}/{r}n{w}]
+    choise = input(f"""
+                ███╗   ██╗███████╗██╗    ██╗    ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗██╗
+                ████╗  ██║██╔════╝██║    ██║    ██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██║
+                ██╔██╗ ██║█████╗  ██║ █╗ ██║    ██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗  ██║
+                ██║╚██╗██║██╔══╝  ██║███╗██║    ██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝  ╚═╝
+                ██║ ╚████║███████╗╚███╔███╔╝    ╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗██╗
+                ╚═╝  ╚═══╝╚══════╝ ╚══╝╚══╝      ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝
+    {inf} Install or dont install {w}[{g}y{w}/{r}n{w}]
     {w}[{ml}>>>{w}]{w} """)
+
     if choise == "y":
-        os.system(
-            "title Roblox Account Gen   ^|    Updating    ^|   Made by TerrificTable55™#5297")
+        title("Updating")
+
         try:
             new_version = requests.get(
                 "https://github.com/TerrificTable/Roblox-Account-Gen/archive/refs/heads/main.zip")
+
             with open("Roblox-Account-Gen-main.zip", 'wb')as zipfile:
                 zipfile.write(new_version.content)
+
             with ZipFile("Roblox-Account-Gen-main.zip", 'r') as filezip:
                 filezip.extractall()
+
             os.remove("Roblox-Account-Gen-main.zip")
             cwd = os.getcwd()+'\\Roblox-Account-Gen-main'
             shutil.copytree(cwd, os.getcwd(), dirs_exist_ok=True)
             shutil.rmtree(cwd)
-            os.system(
-                "title Roblox Account Gen   ^|    Finished Updating    ^|   Made by TerrificTable55™#5297")
+
+            title("Finished Updating")
             time.sleep(1)
             os.startfile("run.bat")
             exit()
