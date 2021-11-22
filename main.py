@@ -173,9 +173,9 @@ def genMenu():
     threadsInput = input(f"\n[{m}>{w}] Amount of threads: {c}")
     for i in range(int(threadsInput)):
         if proxy != None:
-            p = Process(target=gen, args=(20, proxy, headless,))
+            p = Process(target=gen, args=(10, proxy, headless,))
         else:
-            p = Process(target=gen, args=(20, proxyList, headless,))
+            p = Process(target=gen, args=(10, proxyList, headless,))
         p.start()
         processes.append(p)
         os.system(
