@@ -37,17 +37,14 @@ def main(bot, username, password, timeout):
     if dayVal < 10:
         dayVal = "0" + str(dayVal)
     day.select_by_value(str(dayVal))
-    # time.sleep(1)
 
     # Dob - Month Selector
     monthVal = random.choice(months)
     month.select_by_visible_text(str(monthVal))
-    # time.sleep(1)
 
     # Dob - Year Selector
     yearVal = random.randint(1960, 2010)
     year.select_by_visible_text(str(yearVal))
-    # time.sleep(1)
 
     # Username
     usernameInput.clear()
@@ -75,7 +72,6 @@ def main(bot, username, password, timeout):
         #         checker(bot, username, password)
         #     time.sleep(3)
 
-        # bot.manage().timeouts().implicitlyWait()
         checker(bot, username, password)
     except Exception as e:
         print("ERROR, " + e)
@@ -98,7 +94,6 @@ def main(bot, username, password, timeout):
 
 def checker(bot, username: str, password: str):
     bot.get("https://www.roblox.com/login")
-    # bot.manage().timeouts().implicitlyWait()
     # time.sleep(2)
 
     try:
@@ -195,7 +190,6 @@ def login(username: str, password: str, timeout: int, proxyList, headless: bool 
 
     try:
         main(bot, username, password, timeout)
-        # checker(bot, username, password)
     except Exception as e:
         print(e)
         bot.close()
