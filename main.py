@@ -24,7 +24,6 @@ except Exception as e:
     from util.updateModule import github_version, updateMain
     from selenium.webdriver.chrome.options import Options
     from util.passwordGen import passwordGen
-    from util.plugin import title, clear
     from util.usernameGen import nameGen
     from util.loginModule import checker
     from multiprocessing import Process
@@ -32,14 +31,12 @@ except Exception as e:
     from util.proxyscraper import main
     from pypresence import Presence
     from selenium import webdriver
+    from util.plugin import clear
     from colorama import Fore
     import requests
     import zipfile
-    import psutil
-    import shutil
     import wget
     import time
-    import os
 
 r = Fore.RED
 g = Fore.GREEN
@@ -85,19 +82,20 @@ def rpc(name: str, largeText: str, largeImage: str, smallText: str, smallImage: 
 
 
 def download_chromedriver():
-    url = 'https://chromedriver.storage.googleapis.com/LATEST_RELEASE'
-    response = requests.get(url)
-    version_number = response.text
+    if not os.path.isfile(f"{os.getcwd()}/chromedriver.exe"):
+        url = 'https://chromedriver.storage.googleapis.com/LATEST_RELEASE'
+        response = requests.get(url)
+        version_number = response.text
 
-    download_url = "https://chromedriver.storage.googleapis.com/" + \
-        version_number + "/chromedriver_win32.zip"
+        download_url = "https://chromedriver.storage.googleapis.com/" + \
+            version_number + "/chromedriver_win32.zip"
 
-    latest_driver_zip = wget.download(download_url, 'chromedriver.zip')
+        latest_driver_zip = wget.download(download_url, 'chromedriver.zip')
 
-    with zipfile.ZipFile(latest_driver_zip, 'r') as zip_ref:
-        zip_ref.extractall()
-        print("Chromedriver Installed")
-    os.remove(latest_driver_zip)
+        with zipfile.ZipFile(latest_driver_zip, 'r') as zip_ref:
+            zip_ref.extractall()
+            print("Chromedriver Installed")
+        os.remove(latest_driver_zip)
 
 
 # def start(threadsAmt, timeout: int):
