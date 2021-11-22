@@ -1,6 +1,5 @@
 from zipfile import ZipFile
 from colorama import Fore
-from common import title
 import requests
 import shutil
 import time
@@ -17,6 +16,11 @@ y = Fore.LIGHTYELLOW_EX
 w = Fore.WHITE
 inf = f"[{c}i{w}]"
 err = f"[{r}-{w}]"
+
+
+def title(content: str):
+    os.system(
+        f"title Roblox Account Gen   ^|    {content}    ^|   Made by TerrificTable55™#5297")
 
 
 def github_version():

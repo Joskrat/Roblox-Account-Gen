@@ -167,6 +167,7 @@ def log(username, password, valid):
 def login(username: str, password: str, timeout: int, proxyList, headless: bool = True):
     options = Options()
     options.headless = headless
+
     if proxyList != None:
         proxy = random.choice(proxyList)
         options.add_argument(f'--proxy-server={proxy}')

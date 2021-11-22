@@ -2,7 +2,7 @@ try:
     from util.updateModule import github_version, updateMain
     from selenium.webdriver.chrome.options import Options
     from util.passwordGen import passwordGen
-    from util.common import title, clear
+    from util.plugin import title, clear
     from util.usernameGen import nameGen
     from util.loginModule import checker
     from multiprocessing import Process
@@ -16,13 +16,15 @@ try:
     import wget
     import time
     import os
-except:
+except Exception as e:
     import os
-    from util.common import title
+    from util.plugin import title
     title("Installing requirements")
     os.system("python -m pip install colorama requests wget selenium exrex typing maxminddb ipaddress loguru faker pypresence PySocks psutil bs4 tqdm")
+    from util.updateModule import github_version, updateMain
     from selenium.webdriver.chrome.options import Options
     from util.passwordGen import passwordGen
+    from util.plugin import title, clear
     from util.usernameGen import nameGen
     from util.loginModule import checker
     from multiprocessing import Process
@@ -30,7 +32,6 @@ except:
     from util.proxyscraper import main
     from pypresence import Presence
     from selenium import webdriver
-    from util.common import title
     from colorama import Fore
     import requests
     import zipfile
