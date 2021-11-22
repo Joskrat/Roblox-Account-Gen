@@ -196,8 +196,6 @@ def login(username: str, password: str, timeout: int, proxyList, headless: bool 
     try:
         main(bot, username, password, timeout)
         # checker(bot, username, password)
-        return True
     except Exception as e:
         print(e)
         bot.close()
-        return False
