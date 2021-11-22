@@ -55,7 +55,11 @@ y = Fore.LIGHTYELLOW_EX
 w = Fore.WHITE
 inf = f"[{c}i{w}]"
 err = f"[{r}-{w}]"
-localVer = 1.3
+
+with open("./VERSION", "r") as f:
+    versions = f.readlines()
+    pLocalVer = versions[0].replace("\n", "")
+    localVer = versions[0]
 
 
 def rpc(name: str, largeText: str, largeImage: str, smallText: str, smallImage: str, linkText, link: str, link2Text, link2: str):
@@ -208,7 +212,7 @@ def mainMenu():
         {w}██{g}║  {w}██{g}║╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗╚{w}██{w}██{w}██{g}╔╝{w}██{g}╔╝ {w}██{g}╗    ╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗{w}██{g}║ ╚{w}██{w}██{g}║
         {g}╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝╚═╝  ╚═══╝{w}
                                             {w}[{m}DEV{w}]               {c}TerrificTable{w}
-                                            {w}[{m}LOCAL-VERSION{w}]     {g}{str(localVer)}{w}
+                                            {w}[{m}LOCAL-VERSION{w}]     {g}{str(pLocalVer)}{w}
                                             {w}[{m}LASTEST-VERSION{w}]   {g}{str(github_version())}{w}\n\n\n
         """)
     print(f"""

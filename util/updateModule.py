@@ -1,8 +1,21 @@
 from zipfile import ZipFile
+from colorama import Fore
 import requests
 import shutil
 import time
 import os
+
+
+r = Fore.RED
+g = Fore.GREEN
+b = Fore.BLUE
+c = Fore.CYAN
+ml = Fore.LIGHTMAGENTA_EX
+m = Fore.MAGENTA
+y = Fore.LIGHTYELLOW_EX
+w = Fore.WHITE
+inf = f"[{c}i{w}]"
+err = f"[{r}-{w}]"
 
 
 def github_version():
@@ -15,31 +28,33 @@ def github_version():
 
 
 def update():
-    header = {
-        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36",
-        "X-Requested-With": "XMLHttpRequest"
-    }
-    os.system(
-        "title Roblox Account Gen   ^|    Updating    ^|   Made by TerrificTable55™#5297")
-    try:
-        new_version = requests.get(
-            "https://github.com/TerrificTable/Roblox-Account-Gen/archive/refs/heads/main.zip")
-        with open("Roblox-Account-Gen-main.zip", 'wb')as zipfile:
-            zipfile.write(new_version.content)
-        with ZipFile("Roblox-Account-Gen-main.zip", 'r') as filezip:
-            filezip.extractall()
-        os.remove("Roblox-Account-Gen-main.zip")
-        cwd = os.getcwd()+'\\Roblox-Account-Gen-main'
-        shutil.copytree(cwd, os.getcwd(), dirs_exist_ok=True)
-        shutil.rmtree(cwd)
+    choise = input(f"""{inf} UPDATE AVALABLE 
+            Install or dont install {w}[{g}y{w}/{r}n{w}]
+    {w}[{ml}>>>{w}]{w} """)
+    if choise == "y":
         os.system(
-            "title Roblox Account Gen   ^|    Finished Updating    ^|   Made by TerrificTable55™#5297")
-        time.sleep(1)
-        os.startfile("run.bat")
-        exit()
-    except Exception as err:
-        os.system("cls;clear")
-        time.sleep(7)
+            "title Roblox Account Gen   ^|    Updating    ^|   Made by TerrificTable55™#5297")
+        try:
+            new_version = requests.get(
+                "https://github.com/TerrificTable/Roblox-Account-Gen/archive/refs/heads/main.zip")
+            with open("Roblox-Account-Gen-main.zip", 'wb')as zipfile:
+                zipfile.write(new_version.content)
+            with ZipFile("Roblox-Account-Gen-main.zip", 'r') as filezip:
+                filezip.extractall()
+            os.remove("Roblox-Account-Gen-main.zip")
+            cwd = os.getcwd()+'\\Roblox-Account-Gen-main'
+            shutil.copytree(cwd, os.getcwd(), dirs_exist_ok=True)
+            shutil.rmtree(cwd)
+            os.system(
+                "title Roblox Account Gen   ^|    Finished Updating    ^|   Made by TerrificTable55™#5297")
+            time.sleep(1)
+            os.startfile("run.bat")
+            exit()
+        except Exception as err:
+            os.system("cls;clear")
+            time.sleep(7)
+    else:
+        pass
 
 
 def updateChecker(local, offical):

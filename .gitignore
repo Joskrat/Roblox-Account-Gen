@@ -12,3 +12,4 @@ build-main.py
 output/RobloxGen.exe
 output/chromedriver.exe
 util/__pycache__
+chromedriver.zip
