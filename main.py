@@ -48,22 +48,24 @@ y = Fore.LIGHTYELLOW_EX
 w = Fore.WHITE
 inf = f"[{c}i{w}]"
 err = f"[{r}-{w}]"
-cpath = str(os.getcwd()).replace("\\", "/")
 
-try:
-    with open(f"{cpath}/VERSION", "r") as f:
+
+def findVersion(path: str = "."):
+    with open(f"{path}/VERSION", "r") as f:
         versions = f.readlines()
         pLocalVer = versions[0].replace("\n", "")
         localVer = versions[0]
+    return localVer, pLocalVer
+
+
+try:
+    localVer, pLocalVer = findVersion()
 except:
-    for f in os.listdir('.'):
-        if not os.path.isfile(f):
-            path = os.path.join('.', f)
+    for file in os.listdir('.'):
+        if not os.path.isfile(file):
+            path = os.path.join('.', file)
             try:
-                with open(f"{path}/VERSION", "r") as f:
-                    versions = f.readlines()
-                    pLocalVer = versions[0].replace("\n", "")
-                    localVer = versions[0]
+                localVer, pLocalVer = findVersion(path)
             except:
                 pass
 
