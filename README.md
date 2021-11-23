@@ -14,9 +14,13 @@
         <img src="./assets/icon.png" style="width:200px;" alt="Logo"/>
     </p>
     <h1>Roblox-Account-Gen</h>
-    <h3>A working roblox account generator (state 11.5.2021) it doesnt bypass the capcha stuff cuz these didnt showed up in     my test runs
+    <h3>A working roblox account generator (state 11.5.2021) it doesnt bypass the capcha stuff cuz these didnt showed up in<br>
+        my test runs
         i have no clue why i made this just had the idea out of no where<br>
-        To be honest i have no clue about the captcha its probably FunCaptcha but i have no clue how they make it cuz sometimes it will be shown and sometimes it doesnt if you           have an idea you can create a pull requests
+        To be honest i have no clue about the captcha its probably FunCaptcha but i have no clue how they make it cuz sometimes it will be shown and sometimes it doesnt.<br>
+        If you have an idea you can create a pull requests.<br>
+        I'm realy sorry but somehow i fucked up the gen so after a few accounts it will just keep opening chrome but not generate accounts.<br>
+        But until that point (its arround 4 accounts) it will work fine and wait until you filled out the captcha
     <br>
     <br>
     <a href="https://github.com/TerrificTable/Roblox-Account-Gen/issues">Report Bug</a>
@@ -28,10 +32,8 @@
 <div align="center">
     <h1>Installation</h>
     <h3>git clone the repo<br>
-    <pre>git clone https://github.com/TerrificTable/Roblox-Account-Gen</pre>
     install all requirements (run.bat installs everything)<br>
     <pre>pip install colorama requests wget selenium</pre>
-    and then just run the .py file i think i will upload the .py src and a compiled .exe file in the <a href="https://github.com/TerrificTable/Roblox-Account-Gen/releases">Releases</a> (Outdated)</h3>
 </div>
 
 <div align="center">
