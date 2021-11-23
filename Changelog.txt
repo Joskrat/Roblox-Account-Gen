@@ -1,9 +1,36 @@
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                        V.1.3
+            
+    Added:
+        - Optional AutoUpdate
+        - Wait until webside loads to do something
+        - A new proxy scraper (not in use yet)
+        - Some basic options in a new file called plugin
+        - Version file and Version check
+    
+    Changes:
+        - Login Comandline
+        - Some bug fixes
+        - Updated the run.bat file
+        - Some code in the main file to make it more efficient and easier to read
+
+    Removed:
+        - Some unnessesary code
+
+    Credits:
+        - HazardNuker for the new proxyscraper
+        - Some random program i saw on github for the autoupdate idea
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
                         V.1.2.1
+
     Added:
         - Experimental GUI (HAS NO FUNCTION)
     
-    Changed:
+    Changes:
         - Some bug fixes
 
     Removed:
@@ -14,13 +41,15 @@
     
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
                         V.1.2
+
     Added:
         - Changelog
         - Discord RPC
 
-    Changed:
+    Changes:
         - UsernameGen
         - Login
         - Checker
