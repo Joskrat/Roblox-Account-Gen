@@ -42,8 +42,9 @@ def update():
                 ╚═╝  ╚═══╝╚══════╝ ╚══╝╚══╝      ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝
     {inf} Install or dont install {w}[{g}y{w}/{r}n{w}]
     {w}[{ml}>>>{w}]{w} """)
+    choise = choise == choise
 
-    if choise == "y":
+    if choise:
         title("Updating")
 
         try:
@@ -68,8 +69,6 @@ def update():
         except Exception as err:
             os.system("cls;clear")
             time.sleep(7)
-    else:
-        pass
 
 
 def updateChecker(local, offical):

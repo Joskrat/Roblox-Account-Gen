@@ -10,6 +10,7 @@ try:
     from util.proxyscraper import main
     from pypresence import Presence
     from selenium import webdriver
+    from util.plugin import debug
     from colorama import Fore
     import requests
     import zipfile
@@ -31,6 +32,7 @@ except Exception as e:
     from util.proxyscraper import main
     from pypresence import Presence
     from selenium import webdriver
+    from util.plugin import debug
     from util.plugin import clear
     from colorama import Fore
     import requests
@@ -46,8 +48,6 @@ ml = Fore.LIGHTMAGENTA_EX
 m = Fore.MAGENTA
 y = Fore.LIGHTYELLOW_EX
 w = Fore.WHITE
-inf = f"[{c}i{w}]"
-err = f"[{r}-{w}]"
 
 
 def findVersion(path: str = "."):
@@ -109,7 +109,7 @@ def download_chromedriver():
 
         with zipfile.ZipFile(latest_driver_zip, 'r') as zip_ref:
             zip_ref.extractall()
-            print("Chromedriver Installed")
+            debug.info("Chromedriver Installed")
         os.remove(latest_driver_zip)
 
 
@@ -118,11 +118,11 @@ def download_chromedriver():
 #         thread = threading.Thread(target=gen, args=(timeout,))
 #         thread.start()
 #         threads.append(thread)
-#     print(f"{w}[{g}={w}] -> Threads Started")
+#     debug.info(f"{w} -> Threads Started")
 
 #     for thread in threads:
 #         thread.join()
-#     print(f"[{g}={w}] -> Threads Finished, press [{y}ENTER{w}] to exit")
+#     debug.info(f" -> Threads Finished, press [{y}ENTER{w}] to exit")
 #     input()
 #     exit()
 
@@ -137,7 +137,7 @@ def gen(timeout, proxy, headless=False):
             flag = login(str(username), str(password),
                          int(timeout), proxy, bool(headless))
             if flag == False:
-                print(f"{err} - Invalid Proxy")
+                debug.error(f" Invalid Proxy")
 
 
 def genMenu():
@@ -149,7 +149,7 @@ def genMenu():
         {w}██{g}║  {w}██{g}║╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗╚{w}██{w}██{w}██{g}╔╝{w}██{g}╔╝ {w}██{g}╗    ╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗{w}██{g}║ ╚{w}██{w}██{g}║
         {g}╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝╚═╝  ╚═══╝{w}
         {w}\n
-        {inf} I would recomend not using this program in headless mode cuz at the moment you need to fill out the captchas yourself
+        {debug.info("")} I would recomend not using this program in headless mode cuz at the moment you need to fill out the captchas yourself
             (I'm still working on a bypass)\n\n\n""")
 
     proxyInput = input(
@@ -172,10 +172,7 @@ def genMenu():
     title("Idle")
 
     headless = input(f"{w}[{m}>{w}] Run chromedriver headless [y/n]: ")
-    if headless == "y":
-        headless = True
-    else:
-        headless = False
+    headless = headless == headless
 
     threadsInput = input(f"\n[{m}>{w}] Amount of threads: {c}")
     for i in range(int(threadsInput)):
@@ -186,13 +183,13 @@ def genMenu():
         p.start()
         processes.append(p)
         title(f"Threads: {threadsInput}")
-    print(f"{w}[{g}={w}] -> Threads Started")
+    debug.info(f"{w} -> Threads Started")
 
     for pr in processes:
         pr.join()
         title("Finished")
 
-    print(f"[{g}={w}] -> Threads Finished, press [{y}ENTER{w}] to exit")
+    debug.info(f" -> Threads Finished, press [{y}ENTER{w}] to exit")
     input()
     exit()
 
@@ -240,14 +237,10 @@ def mainMenu():
             {w}██{g}╔══{w}██{g}╗{w}██{g}║   {w}██{g}║{w}██{g}╔══{w}██{g}╗{w}██{g}║     {w}██{g}║   {w}██{g}║ {w}██{g}╔{w}██{g}╗     {w}██{g}║   {w}██{g}║{w}██{g}╔══╝  {w}██{g}║╚{w}██{g}╗{w}██{g}║
             {w}██{g}║  {w}██{g}║╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗╚{w}██{w}██{w}██{g}╔╝{w}██{g}╔╝ {w}██{g}╗    ╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗{w}██{g}║ ╚{w}██{w}██{g}║
             {g}╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝╚═╝  ╚═══╝\n
-            {inf} I would recomend not using this program in headless mode cuz at the moment you need to fill out the captchas yourself
+            {debug.info("")} I would recomend not using this program in headless mode cuz at the moment you need to fill out the captchas yourself
                 (I'm still working on a bypass)\n\n\n""")
         headless = input(f"{w}[{m}>{w}] Headless [y/n]: ")
-
-        if headless == "y":
-            headless = True
-        else:
-            headless = False
+        headless = headless == "y"
 
         username = input(f"\n{w}[{m}>{w}] Username: ")
         password = input(f"{w}[{m}>{w}] Password: ")
