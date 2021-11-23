@@ -48,11 +48,24 @@ y = Fore.LIGHTYELLOW_EX
 w = Fore.WHITE
 inf = f"[{c}i{w}]"
 err = f"[{r}-{w}]"
+cpath = str(os.getcwd()).replace("\\", "/")
 
-with open("./VERSION", "r") as f:
-    versions = f.readlines()
-    pLocalVer = versions[0].replace("\n", "")
-    localVer = versions[0]
+try:
+    with open(f"{cpath}/VERSION", "r") as f:
+        versions = f.readlines()
+        pLocalVer = versions[0].replace("\n", "")
+        localVer = versions[0]
+except:
+    for f in os.listdir('.'):
+        if not os.path.isfile(f):
+            path = os.path.join('.', f)
+            try:
+                with open(f"{path}/VERSION", "r") as f:
+                    versions = f.readlines()
+                    pLocalVer = versions[0].replace("\n", "")
+                    localVer = versions[0]
+            except:
+                pass
 
 
 def rpc(name: str, largeText: str, largeImage: str, smallText: str, smallImage: str, linkText, link: str, link2Text, link2: str):
