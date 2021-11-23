@@ -141,6 +141,7 @@ def gen(timeout, proxy, headless=False):
 
 
 def genMenu():
+    clear()
     print(f"""
         {w}██{w}██{w}██{g}╗  {w}██{w}██{w}██{g}╗ {w}██{w}██{w}██{g}╗ {w}██{g}╗      {w}██{w}██{w}██{g}╗ {w}██{g}╗  {w}██{g}╗     {w}██{w}██{w}██{g}╗ {w}██{w}██{w}██{w}█{g}╗{w}██{w}█{g}╗   {w}██{g}╗
         {w}██{g}╔══{w}██{g}╗{w}██{g}╔═══{w}██{g}╗{w}██{g}╔══{w}██{g}╗{w}██{g}║     {w}██{g}╔═══{w}██{g}╗╚{w}██{g}╗{w}██{g}╔╝    {w}██{g}╔════╝ {w}██{g}╔════╝{w}██{w}██{g}╗  {w}██{g}║
@@ -149,7 +150,7 @@ def genMenu():
         {w}██{g}║  {w}██{g}║╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗╚{w}██{w}██{w}██{g}╔╝{w}██{g}╔╝ {w}██{g}╗    ╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗{w}██{g}║ ╚{w}██{w}██{g}║
         {g}╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝╚═╝  ╚═══╝{w}
         {w}\n
-        {debug.info("")} I would recomend not using this program in headless mode cuz at the moment you need to fill out the captchas yourself
+        {w}[{g}={w}] I would recomend not using this program in headless mode cuz at the moment you need to fill out the captchas yourself
             (I'm still working on a bypass)\n\n\n""")
 
     proxyInput = input(
@@ -172,7 +173,10 @@ def genMenu():
     title("Idle")
 
     headless = input(f"{w}[{m}>{w}] Run chromedriver headless [y/n]: ")
-    headless = headless == headless
+    if headless == "y":
+        headless = True
+    else:
+        headless = False
 
     threadsInput = input(f"\n[{m}>{w}] Amount of threads: {c}")
     for i in range(int(threadsInput)):
@@ -237,10 +241,13 @@ def mainMenu():
             {w}██{g}╔══{w}██{g}╗{w}██{g}║   {w}██{g}║{w}██{g}╔══{w}██{g}╗{w}██{g}║     {w}██{g}║   {w}██{g}║ {w}██{g}╔{w}██{g}╗     {w}██{g}║   {w}██{g}║{w}██{g}╔══╝  {w}██{g}║╚{w}██{g}╗{w}██{g}║
             {w}██{g}║  {w}██{g}║╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗╚{w}██{w}██{w}██{g}╔╝{w}██{g}╔╝ {w}██{g}╗    ╚{w}██{w}██{w}██{g}╔╝{w}██{w}██{w}██{w}█{g}╗{w}██{g}║ ╚{w}██{w}██{g}║
             {g}╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝╚═╝  ╚═══╝\n
-            {debug.info("")} I would recomend not using this program in headless mode cuz at the moment you need to fill out the captchas yourself
+            {w}[{g}={w}] I would recomend not using this program in headless mode cuz at the moment you need to fill out the captchas yourself
                 (I'm still working on a bypass)\n\n\n""")
         headless = input(f"{w}[{m}>{w}] Headless [y/n]: ")
-        headless = headless == "y"
+        if headless == "y":
+            headless = True
+        else:
+            headless = False
 
         username = input(f"\n{w}[{m}>{w}] Username: ")
         password = input(f"{w}[{m}>{w}] Password: ")
