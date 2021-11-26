@@ -1,16 +1,13 @@
 try:
     from util.updateModule import github_version, updateMain
-    from selenium.webdriver.chrome.options import Options
     from util.singeCheckerModule import mainChecker
     from util.passwordGen import passwordGen
     from util.plugin import title, clear
     from util.usernameGen import nameGen
-    from util.loginModule import checker
     from multiprocessing import Process
     from util.loginModule import login
     from util.proxyscraper import main
     from pypresence import Presence
-    from selenium import webdriver
     from util.plugin import debug
     from colorama import Fore
     import requests
@@ -18,22 +15,19 @@ try:
     import wget
     import time
     import os
-except Exception as e:
+except:
     import os
     from util.plugin import title
     title("Installing requirements")
     os.system("python -m pip install colorama requests wget selenium exrex typing maxminddb ipaddress loguru faker pypresence PySocks psutil bs4 tqdm")
     from util.updateModule import github_version, updateMain
-    from selenium.webdriver.chrome.options import Options
     from util.singeCheckerModule import mainChecker
     from util.passwordGen import passwordGen
     from util.usernameGen import nameGen
-    from util.loginModule import checker
     from multiprocessing import Process
     from util.loginModule import login
     from util.proxyscraper import main
     from pypresence import Presence
-    from selenium import webdriver
     from util.plugin import debug
     from util.plugin import clear
     from colorama import Fore
@@ -73,16 +67,12 @@ except:
 
 
 def rpc(name: str, largeText: str, largeImage: str, smallText: str, smallImage: str, linkText, link: str, link2Text, link2: str):
-    buttonList = [
-        {
-            "label": linkText,
-            "url": link
-        },
-        {
-            "label": link2Text,
-            "url": link2
-        }
-    ]
+    buttonList = [{
+        "label": linkText,
+        "url": link}, {
+        "label": link2Text,
+        "url": link2
+    }]
 
     rpc = Presence("909446204029550605")
     rpc.connect()
