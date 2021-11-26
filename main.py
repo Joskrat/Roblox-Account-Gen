@@ -1,6 +1,7 @@
 try:
     from util.updateModule import github_version, updateMain
     from selenium.webdriver.chrome.options import Options
+    from util.singeCheckerModule import mainChecker
     from util.passwordGen import passwordGen
     from util.plugin import title, clear
     from util.usernameGen import nameGen
@@ -18,12 +19,14 @@ try:
     import time
     import os
 except Exception as e:
+    print(e)
     import os
     from util.plugin import title
     title("Installing requirements")
     os.system("python -m pip install colorama requests wget selenium exrex typing maxminddb ipaddress loguru faker pypresence PySocks psutil bs4 tqdm")
     from util.updateModule import github_version, updateMain
     from selenium.webdriver.chrome.options import Options
+    from util.singeCheckerModule import mainChecker
     from util.passwordGen import passwordGen
     from util.usernameGen import nameGen
     from util.loginModule import checker
@@ -231,9 +234,6 @@ def mainMenu():
 
     elif choise == "2":
         clear()
-        options = Options()
-        options.add_experimental_option("excludeSwitches", ["enable-logging"])
-
         print(f"""
             {w}██{w}██{w}██{g}╗  {w}██{w}██{w}██{g}╗ {w}██{w}██{w}██{g}╗ {w}██{g}╗      {w}██{w}██{w}██{g}╗ {w}██{g}╗  {w}██{g}╗     {w}██{w}██{w}██{g}╗ {w}██{w}██{w}██{w}█{g}╗{w}██{w}█{g}╗   {w}██{g}╗
             {w}██{g}╔══{w}██{g}╗{w}██{g}╔═══{w}██{g}╗{w}██{g}╔══{w}██{g}╗{w}██{g}║     {w}██{g}╔═══{w}██{g}╗╚{w}██{g}╗{w}██{g}╔╝    {w}██{g}╔════╝ {w}██{g}╔════╝{w}██{w}██{g}╗  {w}██{g}║
@@ -249,12 +249,7 @@ def mainMenu():
         else:
             headless = False
 
-        username = input(f"\n{w}[{m}>{w}] Username: ")
-        password = input(f"{w}[{m}>{w}] Password: ")
-
-        options.headless = headless
-        bot = webdriver.Chrome(chrome_options=options)
-        checker(bot, username, password)
+        mainChecker(headless)
         input()
         mainMenu()
 

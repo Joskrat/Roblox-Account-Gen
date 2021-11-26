@@ -25,7 +25,8 @@ def clear():
 class debug:
     @staticmethod
     def inp(text):
-        print(f"{w}[{m}>{w}] {text}")
+        inpu = input(f"{w}[{m}>{w}] {text}")
+        return inpu
 
     @staticmethod
     def info(text):
