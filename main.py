@@ -19,7 +19,6 @@ try:
     import time
     import os
 except Exception as e:
-    print(e)
     import os
     from util.plugin import title
     title("Installing requirements")

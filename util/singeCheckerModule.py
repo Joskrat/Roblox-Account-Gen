@@ -1,12 +1,7 @@
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import Select
 from selenium import webdriver
 from colorama import Fore
-import random
+import main
 import time
 import os
 
@@ -108,13 +103,11 @@ def checker(bot, username: str, password: str):
             else:
                 log(username, password, True)
                 bot.close()
-        except Exception as e:
-            print(e)
+        except:
             log(username, password, True)
             bot.close()
 
-    except Exception as e:
-        print(e)
+    except:
         log(username, password, True)
         bot.close()
 
@@ -160,10 +153,9 @@ def mainChecker(headless: bool = True):
                     bot = webdriver.Chrome(chrome_options=options)
                     try:
                         checker(bot, username, password)
-                    except Exception as e:
-                        print(e)
+                    except:
                         bot.close()
-    except Exception as e:
-        print(f"{w}[{r}!{w}] Invalid file path, press [ENTER] to return, " + e)
+    except:
+        print(f"{w}[{r}!{w}] Invalid file path, press [ENTER] to return")
         input()
-        mainChecker()
+        main.mainMenu()
