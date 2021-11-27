@@ -1,9 +1,11 @@
+from plyer.facades import notification
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select
+from plyer import notification
 from selenium import webdriver
 from colorama import Fore
 import random
@@ -153,6 +155,13 @@ def log(username, password, valid):
 
         with open("./logins.txt", "a") as f:
             f.write(f"[Info] {username}:{password}\n")
+
+        def notifyMe(title, message, icon=None):
+            notification.notify(title=title, message=message,
+                                app_icon=icon, timeout=10)
+
+        notifyMe("Roblox Account Generator",
+                 f"Account Generated Username: {username} Password: {password}", "./assets/icon.ico")
 
     elif valid == False:
         print(f"\n[{g}Username{w}] {y}{username}{w} \n[{b}Password{w}] {y}{password}{w} \n[{m}Account-Valid{w}] {r}Invalid{w}\n")

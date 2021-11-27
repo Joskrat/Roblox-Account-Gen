@@ -1,3 +1,6 @@
+from plyer.facades import notification
+
+
 try:
     from util.updateModule import github_version, updateMain
     from util.singeCheckerModule import mainChecker
@@ -8,6 +11,7 @@ try:
     from util.loginModule import login
     from util.proxyscraper import main
     from pypresence import Presence
+    from plyer import notification
     from util.plugin import debug
     from colorama import Fore
     import requests
@@ -28,6 +32,7 @@ except:
     from util.loginModule import login
     from util.proxyscraper import main
     from pypresence import Presence
+    from plyer import notification
     from util.plugin import debug
     from util.plugin import clear
     from colorama import Fore
@@ -35,6 +40,7 @@ except:
     import zipfile
     import wget
     import time
+
 
 r = Fore.RED
 g = Fore.GREEN
