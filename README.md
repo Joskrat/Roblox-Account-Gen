@@ -47,7 +47,7 @@
 <div align="center">
     <div class="Text" align="center">
         <h1>Features</h>
-        <h3>It does what it says, it generates roblox accounts using threading so you can generate a lot of accounts and it will save the username and password in a login.txt file and will print the username password and date of birth in the console</h3>
+        <h3>It does what it says, it generates roblox accounts using threading so you can generate a lot of accounts and it will save the username and password in a login.txt file and will print the username password <s>and date of birth in the console</s></h3>
     </div>
 </div>
 
