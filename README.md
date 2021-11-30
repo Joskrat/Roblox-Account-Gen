@@ -56,7 +56,7 @@
         <h1>ToDo</h>
         <h3>- <s>Optional AutoUpdate</s><br>
             - Captcha Bypass<br>
-            - Sorting code</h3>
+            - <s>Sorting code</s></h3>
     </div>
 </div>
 
