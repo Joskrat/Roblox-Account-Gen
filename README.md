@@ -15,7 +15,7 @@
     </p>
     <div class="text" align="center">
         <h1>Roblox-Account-Gen</h>
-        <h3>A working roblox account generator (state 11.5.2021) it doesnt bypass the capcha stuff cuz these didnt showed up in<br>
+        <h3>A working roblox account generator (state 11.30.2021) it doesnt bypass the capcha stuff cuz these didnt showed up in<br>
             my test runs
             i have no clue why i made this just had the idea out of no where<br>
             To be honest i have no clue about the captcha its probably FunCaptcha but i have no clue how they make it cuz sometimes it will be shown and sometimes it doesnt.<br>
