@@ -21,7 +21,8 @@
             To be honest i have no clue about the captcha its probably FunCaptcha but i have no clue how they make it cuz sometimes it will be shown and sometimes it doesnt.<br>
             If you have an idea you can create a pull requests.<br>
             I'm realy sorry but somehow i fucked up the gen so after a few accounts it will just keep opening chrome but not generate accounts.<br>
-            But until that point (its arround 4 accounts) it will work fine and wait until you filled out the captcha
+            But until that point (its arround 4 accounts) it will work fine and wait until you filled out the captcha<br>
+            I have no clue sometimes it does the lots of chromewindows and no accounts thing but sometimes not
     </div>
     <div class="links" align="center">
         <h3>
