@@ -3,8 +3,8 @@ from plyer.facades import notification
 
 try:
     from util.updateModule import github_version, updateMain
-    from util.singeCheckerModule import mainChecker
     from util.passwordGen import passwordGen
+    from util.loginModule import checker
     from util.plugin import title, clear
     from util.usernameGen import nameGen
     from multiprocessing import Process
@@ -25,7 +25,6 @@ except:
     title("Installing requirements")
     os.system("python -m pip install colorama requests wget selenium exrex typing maxminddb ipaddress loguru faker pypresence PySocks psutil bs4 tqdm")
     from util.updateModule import github_version, updateMain
-    from util.singeCheckerModule import mainChecker
     from util.passwordGen import passwordGen
     from util.usernameGen import nameGen
     from multiprocessing import Process
@@ -244,7 +243,7 @@ def mainMenu():
         else:
             headless = False
 
-        mainChecker(headless)
+        print("DOESNT WORK YET\nPress [ENTER] to go back")
         input()
         mainMenu()
 
