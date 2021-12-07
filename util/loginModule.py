@@ -24,8 +24,10 @@ w = Fore.WHITE
 
 
 def main(bot, username, password, timeout):
-    global count
-    day = Select(bot.find_element_by_xpath('//*[@id="DayDropdown"]'))
+    try:
+        day = Select(bot.find_element_by_xpath('//*[@id="DayDropdown"]'))
+    except:
+        main(bot, username, password, timeout)
     month = Select(bot.find_element_by_xpath('//*[@id="MonthDropdown"]'))
     year = Select(bot.find_element_by_xpath('//*[@id="YearDropdown"]'))
     usernameInput = bot.find_element_by_xpath('//*[@id="signup-username"]')
