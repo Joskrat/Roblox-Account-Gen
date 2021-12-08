@@ -1,8 +1,4 @@
-from plyer.facades import notification
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.common.exceptions import TimeoutException
+import json
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select
 from plyer import notification
@@ -23,11 +19,11 @@ y = Fore.LIGHTYELLOW_EX
 w = Fore.WHITE
 
 
-def main(bot, username, password, timeout):
+def main(bot, username, password, timeout, config=None):
     try:
         day = Select(bot.find_element_by_xpath('//*[@id="DayDropdown"]'))
     except:
-        main(bot, username, password, timeout)
+        main(bot, username, password, timeout, config)
     month = Select(bot.find_element_by_xpath('//*[@id="MonthDropdown"]'))
     year = Select(bot.find_element_by_xpath('//*[@id="YearDropdown"]'))
     usernameInput = bot.find_element_by_xpath('//*[@id="signup-username"]')
@@ -73,10 +69,10 @@ def main(bot, username, password, timeout):
         #         log(username, password, None)
         #     except:
         #         time.sleep(1)
-        #         checker(bot, username, password)
+        #         checker(bot, username, password, config)
         #     time.sleep(3)
 
-        checker(bot, username, password)
+        checker(bot, username, password, config)
     except Exception as e:
         print("ERROR, " + e)
         bot.close()
@@ -88,15 +84,15 @@ def main(bot, username, password, timeout):
 
 #     if invalid != None or str(invalid) != "":
 #         print(invalid)
-#         log(username, password, None)
+#         log(username, password, None, config)
 #         # bot.close()
 # except Exception as e:
 #     print("unavailable " + e)
-#     # log(username, password, True)
+#     # log(username, password, True, config)
 #     pass
 
 
-def checker(bot, username: str, password: str):
+def checker(bot, username: str, password: str, config=None) -> None:
     bot.get("https://www.roblox.com/login")
     # time.sleep(2)
 
@@ -106,8 +102,8 @@ def checker(bot, username: str, password: str):
         try:
             bot.find_element_by_xpath('//*[@id="login-username"]')
         except:
-            checker(bot, username, password)
-        checker(bot, username, password)
+            checker(bot, username, password, config)
+        checker(bot, username, password, config)
 
     try:
         usernameInput = bot.find_element_by_xpath('//*[@id="login-username"]')
@@ -140,30 +136,31 @@ def checker(bot, username: str, password: str):
                 log(username, password, False)
                 bot.close()
             else:
-                log(username, password, True)
+                log(username, password, True, config)
                 bot.close()
         except:
-            log(username, password, True)
+            log(username, password, True, config)
             bot.close()
 
     except:
-        log(username, password, True)
+        log(username, password, True, config)
         bot.close()
 
 
-def log(username, password, valid):
+def log(username, password, valid, config=None) -> None:
     if valid == True:
         print(f"\n[{g}Username{w}] {y}{username}{w} \n[{b}Password{w}] {y}{password}{w} \n[{m}Account-Valid{w}] {g}Valid{w}\n")
 
         with open("./logins.txt", "a") as f:
             f.write(f"[Info] {username}:{password}\n")
 
-        def notifyMe(title, message, icon=None):
-            notification.notify(title=title, message=message,
-                                app_icon=icon, timeout=10)
+        if config != None and config["options"]["NOTIFICATIONS"] == "True":
+            def notifyMe(title, message, icon=None):
+                notification.notify(title=title, message=message,
+                                    app_icon=icon, timeout=10)
 
-        notifyMe("Roblox Account Generator",
-                 f"Account Generated Username: {username} Password: {password}", "./assets/icon.ico")
+            notifyMe("Roblox Account Generator",
+                     f"Account Generated Username: {username} Password: {password}", "./assets/icon.ico")
 
     elif valid == False:
         print(f"\n[{g}Username{w}] {y}{username}{w} \n[{b}Password{w}] {y}{password}{w} \n[{m}Account-Valid{w}] {r}Invalid{w}\n")
@@ -175,7 +172,7 @@ def log(username, password, valid):
         pass
 
 
-def login(username: str, password: str, timeout: int, proxyList, headless: bool = True):
+def login(username: str, password: str, timeout: int, proxyList, headless: bool = True, config=None) -> None:
     options = Options()
     options.headless = headless
 
@@ -202,7 +199,7 @@ def login(username: str, password: str, timeout: int, proxyList, headless: bool 
         username = str(username[:20])
 
     try:
-        main(bot, username, password, timeout)
+        main(bot, username, password, timeout, config)
     except Exception as e:
         print(e)
         bot.close()
