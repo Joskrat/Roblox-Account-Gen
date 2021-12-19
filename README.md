@@ -23,7 +23,7 @@
             I'm realy sorry but somehow i fucked up the gen so after a few accounts it will just keep opening chrome but not generate accounts.<br>
             But until that point (its arround 4 accounts) it will work fine and wait until you filled out the captcha<br>
             I have no clue sometimes it does the lots of chromewindows and no accounts thing but sometimes not<br><br>
-            Use <a href="https://www.python.org/downloads/release/python-397/">>Python 3.9.7</a>
+            Use <a href="https://www.python.org/downloads/release/python-397/">Python 3.9.7</a>
     </div>
     <div class="links" align="center">
         <h3>
